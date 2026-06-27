@@ -13,8 +13,9 @@ from main import make_env, run_episode
 
 
 DEFAULT_CONFIGS = [
-    {"depth": 1, "beam_width": 8, "chance_samples": 4},
-    {"depth": 2, "beam_width": 3, "chance_samples": 2},
+    {"depth": 1, "beam_width": 8, "chance_samples": 4, "chance_mode": "expected"},
+    {"depth": 2, "beam_width": 3, "chance_samples": 2, "chance_mode": "expected"},
+    {"depth": 2, "beam_width": 3, "chance_samples": 2, "chance_mode": "queue"},
 ]
 
 
@@ -23,17 +24,21 @@ def mean(values):
 
 
 def parse_config(value):
-    """Parse one config in the form depth,beam_width,chance_samples."""
+    """Parse one config as depth,beam_width,chance_samples[,chance_mode]."""
     parts = [part.strip() for part in value.split(",")]
-    if len(parts) != 3:
+    if len(parts) not in {3, 4}:
         raise argparse.ArgumentTypeError(
-            "Config must be formatted as depth,beam_width,chance_samples"
+            "Config must be formatted as depth,beam_width,chance_samples[,chance_mode]"
         )
-    depth, beam_width, chance_samples = map(int, parts)
+    depth, beam_width, chance_samples = map(int, parts[:3])
+    chance_mode = parts[3] if len(parts) == 4 else "expected"
+    if chance_mode not in {"expected", "queue"}:
+        raise argparse.ArgumentTypeError("chance_mode must be expected or queue")
     return {
         "depth": depth,
         "beam_width": beam_width,
         "chance_samples": chance_samples,
+        "chance_mode": chance_mode,
     }
 
 
@@ -75,6 +80,7 @@ def summarize(config, results, elapsed_time):
         "depth": config["depth"],
         "beam_width": config["beam_width"],
         "chance_samples": config["chance_samples"],
+        "chance_mode": config["chance_mode"],
         "episodes": len(results),
         "average_reward": mean(rewards),
         "best_reward": max(rewards, default=0.0),
@@ -91,6 +97,7 @@ def run_config(config, episodes, seed, render_mode, delay_ms, max_steps):
         beam_width=config["beam_width"],
         sample_chance=config["depth"] > 1,
         chance_samples=config["chance_samples"],
+        chance_mode=config["chance_mode"],
     )
 
     start_time = time.perf_counter()
@@ -116,6 +123,7 @@ def write_csv(path, rows):
         "depth",
         "beam_width",
         "chance_samples",
+        "chance_mode",
         "episodes",
         "average_reward",
         "best_reward",
@@ -140,6 +148,7 @@ def main():
             f"depth={config['depth']}, "
             f"beam_width={config['beam_width']}, "
             f"chance_samples={config['chance_samples']}"
+            f", chance_mode={config['chance_mode']}"
         )
         summary = run_config(
             config,

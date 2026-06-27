@@ -67,6 +67,9 @@ class ExpectimaxAgent:
         Otherwise all known tetrominoes are evaluated.
     chance_samples:
         Number of tetrominoes to sample when sample_chance is true.
+    chance_mode:
+        "expected" averages over possible future tetrominoes. "queue" uses the
+        actual next tetromino from the environment queue after a simulated step.
     """
 
     def __init__(
@@ -77,6 +80,7 @@ class ExpectimaxAgent:
         beam_width: Optional[int] = 8,
         sample_chance: bool = False,
         chance_samples: int = 4,
+        chance_mode: str = "expected",
         rng: Optional[random.Random] = None,
     ) -> None:
         self.depth = max(1, int(depth))
@@ -85,6 +89,9 @@ class ExpectimaxAgent:
         self.beam_width = None if beam_width is None else max(1, int(beam_width))
         self.sample_chance = sample_chance
         self.chance_samples = max(1, int(chance_samples))
+        if chance_mode not in {"expected", "queue"}:
+            raise ValueError("chance_mode must be 'expected' or 'queue'")
+        self.chance_mode = chance_mode
         self.rng = rng or random.Random()
 
     def select_action(self, env: Any, observation: Any = None, info: Optional[dict] = None) -> int:
@@ -148,10 +155,16 @@ class ExpectimaxAgent:
 
             if done or depth <= 1:
                 return value
+            if self.chance_mode == "queue":
+                return value + self.gamma * self._queue_value(env, depth - 1)
             return value + self.gamma * self._chance_value(env, depth - 1)
         finally:
             self._set_state(env, state)
             self._restore_action_mask(env, mask)
+
+    def _queue_value(self, env: Any, depth: int) -> float:
+        observation, info = self._current_grouped_observation(env)
+        return self._max_value(env, observation, info, depth)
 
     def _chance_value(self, env: Any, depth: int) -> float:
         """Average the next max value over possible tetrominoes.

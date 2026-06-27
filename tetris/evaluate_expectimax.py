@@ -20,6 +20,12 @@ def parse_args():
         default=4,
         help="Number of next tetrominoes sampled at chance nodes.",
     )
+    parser.add_argument(
+        "--chance-mode",
+        default="expected",
+        choices=["expected", "queue"],
+        help="Use expected random pieces or the visible queue for lookahead.",
+    )
     parser.add_argument("--seed", type=int, default=42, help="First environment seed.")
     parser.add_argument(
         "--render-mode",
@@ -44,6 +50,7 @@ def main():
         beam_width=args.beam_width,
         sample_chance=args.depth > 1,
         chance_samples=args.chance_samples,
+        chance_mode=args.chance_mode,
     )
 
     results = []
