@@ -76,12 +76,12 @@ python -u tetris\train_dqn.py `
   --step-log-every 500 `
   --save-every 10 `
   --eval-every 50 `
-  --eval-episodes 20 `
-  --best-metric eval_p25 `
+  --eval-episodes 5 `
+  --best-metric eval_avg `
   --output .\models\dqn_afterstate.pt
 ```
 
-训练会保存两个文件：`--output` 是最新 checkpoint，默认额外生成同名 `_best.pt`，例如 `dqn_afterstate_best.pt`。`_best.pt` 按固定 validation seeds 的 greedy 评估保存，更适合作为之后评估和继续训练的起点。`eval_p25` 比 `eval_avg` 更保守，能避免某几个高分 seed 把 checkpoint 误判成 best。
+训练会保存两个文件：`--output` 是最新 checkpoint，默认额外生成同名 `_best.pt`，例如 `dqn_afterstate_best.pt`。`_best.pt` 按周期性 greedy 评估的平均 reward 保存，更适合作为之后评估和继续训练的起点。
 
 如果发现纯 CNN DQN 走偏，比如经常留下明显空洞，可以启用棋盘特征增强版。它会把高度、洞数、凹凸度、井深等归一化特征和棋盘图一起输入网络，比只看棋盘图更不容易学歪：
 
@@ -103,8 +103,8 @@ python -u tetris\train_dqn.py `
   --step-log-every 500 `
   --save-every 1 `
   --eval-every 50 `
-  --eval-episodes 20 `
-  --best-metric eval_p25 `
+  --eval-episodes 5 `
+  --best-metric eval_avg `
   --output .\models\dqn_afterstate_features.pt
 ```
 
@@ -141,8 +141,8 @@ python -u tetris\train_dqn.py `
   --step-log-every 500 `
   --save-every 1 `
   --eval-every 50 `
-  --eval-episodes 20 `
-  --best-metric eval_p25 `
+  --eval-episodes 5 `
+  --best-metric eval_avg `
   --output .\models\dqn_afterstate_finetuned.pt
 ```
 
@@ -173,7 +173,7 @@ python tetris\main.py --agent dqn --dqn-model .\models\dqn_afterstate_scripted.p
 ## 评估 DQN
 
 ```powershell
-python tetris\evaluate_dqn.py --model .\models\dqn_afterstate_best.pt --episodes 50 --seed 42 --render-mode ansi --delay-ms 0
+python tetris\evaluate_dqn.py --model .\models\dqn_afterstate_features_best.pt  --episodes 50 --seed 42 --render-mode ansi --delay-ms 0
 ```
 
 边渲染边评估时可以减少局数：
