@@ -1,0 +1,1699 @@
+{
+  "args": {
+    "aggregate_height_penalty": 0.0,
+    "batch_size": 128,
+    "buffer_size": 50000,
+    "checkpoint_dir": null,
+    "checkpoint_interval": 10000,
+    "device": "cpu",
+    "epsilon_decay_steps": 60000,
+    "epsilon_end": 0.1,
+    "epsilon_start": 1.0,
+    "eval_episodes": 20,
+    "eval_max_steps": 1000,
+    "game_over_penalty": -100.0,
+    "gamma": 0.99,
+    "height_penalty": 0.15,
+    "line_reward": 10.0,
+    "line_reward_power": 2.0,
+    "list_presets": false,
+    "log_interval": 1000,
+    "lr": 0.0001,
+    "max_episode_steps": 1000,
+    "output": "models\\dqn_afterstate_shaped_v2.pt",
+    "preset": "shaped_v2_no_suicide",
+    "preset_description": "Recommended next run. Keeps line clears as the main signal, makes survival positive, softens height pressure, and makes game over costly.",
+    "reward_clip": 200.0,
+    "reward_mode": "shaped",
+    "seed": 42,
+    "steps": 100000,
+    "survival_reward": 1.0,
+    "target_update_interval": 2000,
+    "torch_threads": 1,
+    "train_every": 4,
+    "updates_per_step": 1,
+    "warmup_steps": 5000
+  },
+  "checkpoint_history": [
+    {
+      "env_step": 1000,
+      "kind": "best_reward100",
+      "mean_reward_100": 17.017857142857142,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 2000,
+      "kind": "best_reward100",
+      "mean_reward_100": 17.52,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 3000,
+      "kind": "best_reward100",
+      "mean_reward_100": 17.91,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 4000,
+      "kind": "best_reward100",
+      "mean_reward_100": 18.22,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 6000,
+      "kind": "best_reward100",
+      "mean_reward_100": 18.57,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 7000,
+      "kind": "best_reward100",
+      "mean_reward_100": 19.0,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 8000,
+      "kind": "best_reward100",
+      "mean_reward_100": 19.15,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 9000,
+      "kind": "best_reward100",
+      "mean_reward_100": 19.89,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 10000,
+      "kind": "periodic",
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_step_0010000.pt"
+    },
+    {
+      "env_step": 10000,
+      "kind": "best_reward100",
+      "mean_reward_100": 20.42,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 11000,
+      "kind": "best_reward100",
+      "mean_reward_100": 20.81,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 12000,
+      "kind": "best_reward100",
+      "mean_reward_100": 21.54,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 13000,
+      "kind": "best_reward100",
+      "mean_reward_100": 21.65,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 16000,
+      "kind": "best_reward100",
+      "mean_reward_100": 22.06,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 19000,
+      "kind": "best_reward100",
+      "mean_reward_100": 22.44,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 20000,
+      "kind": "periodic",
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_step_0020000.pt"
+    },
+    {
+      "env_step": 21000,
+      "kind": "best_reward100",
+      "mean_reward_100": 23.84,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 22000,
+      "kind": "best_reward100",
+      "mean_reward_100": 23.94,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 24000,
+      "kind": "best_reward100",
+      "mean_reward_100": 24.26,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 25000,
+      "kind": "best_reward100",
+      "mean_reward_100": 26.26,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 30000,
+      "kind": "periodic",
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_step_0030000.pt"
+    },
+    {
+      "env_step": 30000,
+      "kind": "best_reward100",
+      "mean_reward_100": 27.63,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 32000,
+      "kind": "best_reward100",
+      "mean_reward_100": 29.39,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 33000,
+      "kind": "best_reward100",
+      "mean_reward_100": 29.65,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 34000,
+      "kind": "best_reward100",
+      "mean_reward_100": 31.2,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 35000,
+      "kind": "best_reward100",
+      "mean_reward_100": 31.6,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 36000,
+      "kind": "best_reward100",
+      "mean_reward_100": 31.88,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 37000,
+      "kind": "best_reward100",
+      "mean_reward_100": 32.77,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 38000,
+      "kind": "best_reward100",
+      "mean_reward_100": 35.08,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 39000,
+      "kind": "best_reward100",
+      "mean_reward_100": 36.85,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 40000,
+      "kind": "periodic",
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_step_0040000.pt"
+    },
+    {
+      "env_step": 40000,
+      "kind": "best_reward100",
+      "mean_reward_100": 38.51,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 41000,
+      "kind": "best_reward100",
+      "mean_reward_100": 38.78,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 42000,
+      "kind": "best_reward100",
+      "mean_reward_100": 40.67,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 43000,
+      "kind": "best_reward100",
+      "mean_reward_100": 41.94,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 44000,
+      "kind": "best_reward100",
+      "mean_reward_100": 42.75,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 45000,
+      "kind": "best_reward100",
+      "mean_reward_100": 45.43,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 46000,
+      "kind": "best_reward100",
+      "mean_reward_100": 48.87,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 47000,
+      "kind": "best_reward100",
+      "mean_reward_100": 51.84,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 48000,
+      "kind": "best_reward100",
+      "mean_reward_100": 54.06,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 50000,
+      "kind": "periodic",
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_step_0050000.pt"
+    },
+    {
+      "env_step": 51000,
+      "kind": "best_reward100",
+      "mean_reward_100": 54.7,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 52000,
+      "kind": "best_reward100",
+      "mean_reward_100": 61.13,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 53000,
+      "kind": "best_reward100",
+      "mean_reward_100": 65.42,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 54000,
+      "kind": "best_reward100",
+      "mean_reward_100": 70.75,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 55000,
+      "kind": "best_reward100",
+      "mean_reward_100": 73.07,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 56000,
+      "kind": "best_reward100",
+      "mean_reward_100": 74.74,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 57000,
+      "kind": "best_reward100",
+      "mean_reward_100": 77.46,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 58000,
+      "kind": "best_reward100",
+      "mean_reward_100": 82.05,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 59000,
+      "kind": "best_reward100",
+      "mean_reward_100": 87.54,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 60000,
+      "kind": "periodic",
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_step_0060000.pt"
+    },
+    {
+      "env_step": 60000,
+      "kind": "best_reward100",
+      "mean_reward_100": 92.2,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 61000,
+      "kind": "best_reward100",
+      "mean_reward_100": 98.77,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 62000,
+      "kind": "best_reward100",
+      "mean_reward_100": 104.06,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 63000,
+      "kind": "best_reward100",
+      "mean_reward_100": 111.03,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 64000,
+      "kind": "best_reward100",
+      "mean_reward_100": 112.14,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 65000,
+      "kind": "best_reward100",
+      "mean_reward_100": 113.2,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 68000,
+      "kind": "best_reward100",
+      "mean_reward_100": 113.43,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 70000,
+      "kind": "periodic",
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_step_0070000.pt"
+    },
+    {
+      "env_step": 70000,
+      "kind": "best_reward100",
+      "mean_reward_100": 115.71,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 71000,
+      "kind": "best_reward100",
+      "mean_reward_100": 118.29,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 72000,
+      "kind": "best_reward100",
+      "mean_reward_100": 120.1,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 73000,
+      "kind": "best_reward100",
+      "mean_reward_100": 123.5,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 74000,
+      "kind": "best_reward100",
+      "mean_reward_100": 128.01,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 76000,
+      "kind": "best_reward100",
+      "mean_reward_100": 128.03,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 77000,
+      "kind": "best_reward100",
+      "mean_reward_100": 129.43,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 80000,
+      "kind": "periodic",
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_step_0080000.pt"
+    },
+    {
+      "env_step": 85000,
+      "kind": "best_reward100",
+      "mean_reward_100": 130.38,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 90000,
+      "kind": "periodic",
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_step_0090000.pt"
+    },
+    {
+      "env_step": 99000,
+      "kind": "best_reward100",
+      "mean_reward_100": 132.64,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    },
+    {
+      "env_step": 100000,
+      "kind": "periodic",
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_step_0100000.pt"
+    },
+    {
+      "env_step": 100000,
+      "kind": "best_reward100",
+      "mean_reward_100": 133.26,
+      "path": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt"
+    }
+  ],
+  "evaluation": {
+    "average_reward": 184.9,
+    "average_steps": 66.4,
+    "best_reward": 350.0
+  },
+  "log_history": [
+    {
+      "env_step": 1000.0,
+      "episodes": 56.0,
+      "epsilon": 0.985,
+      "gradient_updates": 0.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 0.0,
+      "mean_max_height_100": 11.09,
+      "mean_reward_10": 17.9,
+      "mean_reward_100": 17.017857142857142,
+      "mean_training_reward_100": -6.723500000000001
+    },
+    {
+      "env_step": 2000.0,
+      "episodes": 110.0,
+      "epsilon": 0.97,
+      "gradient_updates": 0.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 0.0,
+      "mean_max_height_100": 10.43,
+      "mean_reward_10": 19.8,
+      "mean_reward_100": 17.52,
+      "mean_training_reward_100": -5.6145000000000005
+    },
+    {
+      "env_step": 3000.0,
+      "episodes": 163.0,
+      "epsilon": 0.955,
+      "gradient_updates": 0.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 0.0,
+      "mean_max_height_100": 11.5,
+      "mean_reward_10": 18.5,
+      "mean_reward_100": 17.91,
+      "mean_training_reward_100": -5.775
+    },
+    {
+      "env_step": 4000.0,
+      "episodes": 214.0,
+      "epsilon": 0.94,
+      "gradient_updates": 0.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 0.0,
+      "mean_max_height_100": 11.04,
+      "mean_reward_10": 18.8,
+      "mean_reward_100": 18.22,
+      "mean_training_reward_100": -5.706
+    },
+    {
+      "env_step": 5000.0,
+      "episodes": 267.0,
+      "epsilon": 0.925,
+      "gradient_updates": 1.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 2.8237695693969727,
+      "mean_max_height_100": 10.29,
+      "mean_reward_10": 17.5,
+      "mean_reward_100": 18.05,
+      "mean_training_reward_100": -6.6035
+    },
+    {
+      "env_step": 6000.0,
+      "episodes": 317.0,
+      "epsilon": 0.91,
+      "gradient_updates": 251.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 5.5694316214323045,
+      "mean_max_height_100": 10.01,
+      "mean_reward_10": 19.1,
+      "mean_reward_100": 18.57,
+      "mean_training_reward_100": -5.551499999999999
+    },
+    {
+      "env_step": 7000.0,
+      "episodes": 367.0,
+      "epsilon": 0.895,
+      "gradient_updates": 501.0,
+      "mean_lines_cleared_100": 0.01,
+      "mean_loss_100": 5.427744748592377,
+      "mean_max_height_100": 10.86,
+      "mean_reward_10": 19.4,
+      "mean_reward_100": 19.0,
+      "mean_training_reward_100": -5.579
+    },
+    {
+      "env_step": 8000.0,
+      "episodes": 418.0,
+      "epsilon": 0.88,
+      "gradient_updates": 751.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 5.336406719684601,
+      "mean_max_height_100": 9.95,
+      "mean_reward_10": 19.9,
+      "mean_reward_100": 19.15,
+      "mean_training_reward_100": -5.5425
+    },
+    {
+      "env_step": 9000.0,
+      "episodes": 466.0,
+      "epsilon": 0.865,
+      "gradient_updates": 1001.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 5.1535928392410275,
+      "mean_max_height_100": 9.79,
+      "mean_reward_10": 19.0,
+      "mean_reward_100": 19.89,
+      "mean_training_reward_100": -6.528499999999999
+    },
+    {
+      "env_step": 10000.0,
+      "episodes": 514.0,
+      "epsilon": 0.85,
+      "gradient_updates": 1251.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 5.150393469333649,
+      "mean_max_height_100": 11.52,
+      "mean_reward_10": 20.2,
+      "mean_reward_100": 20.42,
+      "mean_training_reward_100": -5.777999999999999
+    },
+    {
+      "env_step": 11000.0,
+      "episodes": 561.0,
+      "epsilon": 0.835,
+      "gradient_updates": 1501.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 5.1030708360672,
+      "mean_max_height_100": 9.69,
+      "mean_reward_10": 22.0,
+      "mean_reward_100": 20.81,
+      "mean_training_reward_100": -5.5035
+    },
+    {
+      "env_step": 12000.0,
+      "episodes": 606.0,
+      "epsilon": 0.82,
+      "gradient_updates": 1751.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 5.275122244358062,
+      "mean_max_height_100": 11.58,
+      "mean_reward_10": 22.0,
+      "mean_reward_100": 21.54,
+      "mean_training_reward_100": -5.786999999999999
+    },
+    {
+      "env_step": 13000.0,
+      "episodes": 652.0,
+      "epsilon": 0.8049999999999999,
+      "gradient_updates": 2001.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 4.651076953411103,
+      "mean_max_height_100": 10.89,
+      "mean_reward_10": 20.2,
+      "mean_reward_100": 21.65,
+      "mean_training_reward_100": -5.683499999999999
+    },
+    {
+      "env_step": 14000.0,
+      "episodes": 699.0,
+      "epsilon": 0.79,
+      "gradient_updates": 2251.0,
+      "mean_lines_cleared_100": 0.02,
+      "mean_loss_100": 4.34069614648819,
+      "mean_max_height_100": 10.26,
+      "mean_reward_10": 22.5,
+      "mean_reward_100": 21.23,
+      "mean_training_reward_100": -4.379
+    },
+    {
+      "env_step": 15000.0,
+      "episodes": 745.0,
+      "epsilon": 0.775,
+      "gradient_updates": 2501.0,
+      "mean_lines_cleared_100": 0.02,
+      "mean_loss_100": 4.165814436674118,
+      "mean_max_height_100": 11.26,
+      "mean_reward_10": 23.7,
+      "mean_reward_100": 21.49,
+      "mean_training_reward_100": -4.529
+    },
+    {
+      "env_step": 16000.0,
+      "episodes": 791.0,
+      "epsilon": 0.76,
+      "gradient_updates": 2751.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 3.790972615480423,
+      "mean_max_height_100": 11.11,
+      "mean_reward_10": 21.5,
+      "mean_reward_100": 22.06,
+      "mean_training_reward_100": -4.706500000000001
+    },
+    {
+      "env_step": 17000.0,
+      "episodes": 839.0,
+      "epsilon": 0.745,
+      "gradient_updates": 3001.0,
+      "mean_lines_cleared_100": 0.01,
+      "mean_loss_100": 3.629424809217453,
+      "mean_max_height_100": 10.46,
+      "mean_reward_10": 21.8,
+      "mean_reward_100": 21.29,
+      "mean_training_reward_100": -5.519
+    },
+    {
+      "env_step": 18000.0,
+      "episodes": 884.0,
+      "epsilon": 0.73,
+      "gradient_updates": 3251.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 3.1902087980508806,
+      "mean_max_height_100": 10.55,
+      "mean_reward_10": 20.7,
+      "mean_reward_100": 21.27,
+      "mean_training_reward_100": -5.6324999999999985
+    },
+    {
+      "env_step": 19000.0,
+      "episodes": 928.0,
+      "epsilon": 0.7150000000000001,
+      "gradient_updates": 3501.0,
+      "mean_lines_cleared_100": 0.01,
+      "mean_loss_100": 3.101080688238144,
+      "mean_max_height_100": 11.05,
+      "mean_reward_10": 26.1,
+      "mean_reward_100": 22.44,
+      "mean_training_reward_100": -4.597499999999999
+    },
+    {
+      "env_step": 20000.0,
+      "episodes": 973.0,
+      "epsilon": 0.7,
+      "gradient_updates": 3751.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 2.9927670949697496,
+      "mean_max_height_100": 10.57,
+      "mean_reward_10": 23.4,
+      "mean_reward_100": 22.31,
+      "mean_training_reward_100": -4.6255
+    },
+    {
+      "env_step": 21000.0,
+      "episodes": 1016.0,
+      "epsilon": 0.685,
+      "gradient_updates": 4001.0,
+      "mean_lines_cleared_100": 0.02,
+      "mean_loss_100": 2.5968543708324434,
+      "mean_max_height_100": 10.43,
+      "mean_reward_10": 25.5,
+      "mean_reward_100": 23.84,
+      "mean_training_reward_100": -4.4045
+    },
+    {
+      "env_step": 22000.0,
+      "episodes": 1061.0,
+      "epsilon": 0.67,
+      "gradient_updates": 4251.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 2.8431270933151245,
+      "mean_max_height_100": 10.54,
+      "mean_reward_10": 23.3,
+      "mean_reward_100": 23.94,
+      "mean_training_reward_100": -5.630999999999999
+    },
+    {
+      "env_step": 23000.0,
+      "episodes": 1103.0,
+      "epsilon": 0.655,
+      "gradient_updates": 4501.0,
+      "mean_lines_cleared_100": 0.01,
+      "mean_loss_100": 2.481876345872879,
+      "mean_max_height_100": 10.5,
+      "mean_reward_10": 23.8,
+      "mean_reward_100": 23.75,
+      "mean_training_reward_100": -4.515
+    },
+    {
+      "env_step": 24000.0,
+      "episodes": 1144.0,
+      "epsilon": 0.6399999999999999,
+      "gradient_updates": 4751.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 2.3044224977493286,
+      "mean_max_height_100": 10.11,
+      "mean_reward_10": 26.8,
+      "mean_reward_100": 24.26,
+      "mean_training_reward_100": -4.556499999999999
+    },
+    {
+      "env_step": 25000.0,
+      "episodes": 1184.0,
+      "epsilon": 0.625,
+      "gradient_updates": 5001.0,
+      "mean_lines_cleared_100": 0.01,
+      "mean_loss_100": 2.036134911477566,
+      "mean_max_height_100": 11.12,
+      "mean_reward_10": 28.6,
+      "mean_reward_100": 26.26,
+      "mean_training_reward_100": -4.607999999999999
+    },
+    {
+      "env_step": 26000.0,
+      "episodes": 1227.0,
+      "epsilon": 0.61,
+      "gradient_updates": 5251.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 2.1019238844513892,
+      "mean_max_height_100": 10.51,
+      "mean_reward_10": 22.2,
+      "mean_reward_100": 26.19,
+      "mean_training_reward_100": -5.626499999999998
+    },
+    {
+      "env_step": 27000.0,
+      "episodes": 1266.0,
+      "epsilon": 0.595,
+      "gradient_updates": 5501.0,
+      "mean_lines_cleared_100": 0.02,
+      "mean_loss_100": 1.819317431151867,
+      "mean_max_height_100": 11.07,
+      "mean_reward_10": 26.2,
+      "mean_reward_100": 25.48,
+      "mean_training_reward_100": -4.5005
+    },
+    {
+      "env_step": 28000.0,
+      "episodes": 1306.0,
+      "epsilon": 0.58,
+      "gradient_updates": 5751.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 1.6859546846151352,
+      "mean_max_height_100": 10.47,
+      "mean_reward_10": 26.7,
+      "mean_reward_100": 25.79,
+      "mean_training_reward_100": -4.6105
+    },
+    {
+      "env_step": 29000.0,
+      "episodes": 1345.0,
+      "epsilon": 0.565,
+      "gradient_updates": 6001.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 1.3838794124126435,
+      "mean_max_height_100": 10.4,
+      "mean_reward_10": 27.2,
+      "mean_reward_100": 26.19,
+      "mean_training_reward_100": -3.59
+    },
+    {
+      "env_step": 30000.0,
+      "episodes": 1382.0,
+      "epsilon": 0.55,
+      "gradient_updates": 6251.0,
+      "mean_lines_cleared_100": 0.04,
+      "mean_loss_100": 1.108334139417857,
+      "mean_max_height_100": 10.36,
+      "mean_reward_10": 32.5,
+      "mean_reward_100": 27.63,
+      "mean_training_reward_100": -4.193999999999999
+    },
+    {
+      "env_step": 31000.0,
+      "episodes": 1421.0,
+      "epsilon": 0.5349999999999999,
+      "gradient_updates": 6501.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 1.1238574078679084,
+      "mean_max_height_100": 10.13,
+      "mean_reward_10": 24.1,
+      "mean_reward_100": 27.48,
+      "mean_training_reward_100": -4.559499999999999
+    },
+    {
+      "env_step": 32000.0,
+      "episodes": 1457.0,
+      "epsilon": 0.52,
+      "gradient_updates": 6751.0,
+      "mean_lines_cleared_100": 0.02,
+      "mean_loss_100": 1.0475481483340263,
+      "mean_max_height_100": 10.57,
+      "mean_reward_10": 30.5,
+      "mean_reward_100": 29.39,
+      "mean_training_reward_100": -3.4155
+    },
+    {
+      "env_step": 33000.0,
+      "episodes": 1494.0,
+      "epsilon": 0.5049999999999999,
+      "gradient_updates": 7001.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 1.1187847204878927,
+      "mean_max_height_100": 9.96,
+      "mean_reward_10": 30.6,
+      "mean_reward_100": 29.65,
+      "mean_training_reward_100": -4.534
+    },
+    {
+      "env_step": 34000.0,
+      "episodes": 1531.0,
+      "epsilon": 0.49,
+      "gradient_updates": 7251.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 1.1365949681773782,
+      "mean_max_height_100": 10.89,
+      "mean_reward_10": 26.7,
+      "mean_reward_100": 31.2,
+      "mean_training_reward_100": -4.673500000000001
+    },
+    {
+      "env_step": 35000.0,
+      "episodes": 1566.0,
+      "epsilon": 0.475,
+      "gradient_updates": 7501.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 1.0702447995729745,
+      "mean_max_height_100": 10.2,
+      "mean_reward_10": 30.5,
+      "mean_reward_100": 31.6,
+      "mean_training_reward_100": -5.58
+    },
+    {
+      "env_step": 36000.0,
+      "episodes": 1601.0,
+      "epsilon": 0.45999999999999996,
+      "gradient_updates": 7751.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 0.9877646840363741,
+      "mean_max_height_100": 10.19,
+      "mean_reward_10": 30.0,
+      "mean_reward_100": 31.88,
+      "mean_training_reward_100": -3.5585000000000004
+    },
+    {
+      "env_step": 37000.0,
+      "episodes": 1635.0,
+      "epsilon": 0.44499999999999995,
+      "gradient_updates": 8001.0,
+      "mean_lines_cleared_100": 0.02,
+      "mean_loss_100": 1.0730420411005617,
+      "mean_max_height_100": 10.09,
+      "mean_reward_10": 30.9,
+      "mean_reward_100": 32.77,
+      "mean_training_reward_100": -4.3534999999999995
+    },
+    {
+      "env_step": 38000.0,
+      "episodes": 1669.0,
+      "epsilon": 0.43000000000000005,
+      "gradient_updates": 8251.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 1.2080427880585194,
+      "mean_max_height_100": 11.57,
+      "mean_reward_10": 46.3,
+      "mean_reward_100": 35.08,
+      "mean_training_reward_100": -4.775499999999999
+    },
+    {
+      "env_step": 39000.0,
+      "episodes": 1702.0,
+      "epsilon": 0.4149999999999999,
+      "gradient_updates": 8501.0,
+      "mean_lines_cleared_100": 0.04,
+      "mean_loss_100": 1.120130801424384,
+      "mean_max_height_100": 9.6,
+      "mean_reward_10": 31.5,
+      "mean_reward_100": 36.85,
+      "mean_training_reward_100": -3.07
+    },
+    {
+      "env_step": 40000.0,
+      "episodes": 1735.0,
+      "epsilon": 0.4,
+      "gradient_updates": 8751.0,
+      "mean_lines_cleared_100": 0.05,
+      "mean_loss_100": 1.0623650303855539,
+      "mean_max_height_100": 9.98,
+      "mean_reward_10": 44.9,
+      "mean_reward_100": 38.51,
+      "mean_training_reward_100": -3.0270000000000006
+    },
+    {
+      "env_step": 41000.0,
+      "episodes": 1767.0,
+      "epsilon": 0.385,
+      "gradient_updates": 9001.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 1.0425430054590106,
+      "mean_max_height_100": 9.99,
+      "mean_reward_10": 46.5,
+      "mean_reward_100": 38.78,
+      "mean_training_reward_100": -3.5285000000000006
+    },
+    {
+      "env_step": 42000.0,
+      "episodes": 1799.0,
+      "epsilon": 0.37,
+      "gradient_updates": 9251.0,
+      "mean_lines_cleared_100": 0.02,
+      "mean_loss_100": 1.1739345472306013,
+      "mean_max_height_100": 10.73,
+      "mean_reward_10": 42.8,
+      "mean_reward_100": 40.67,
+      "mean_training_reward_100": -3.239499999999999
+    },
+    {
+      "env_step": 43000.0,
+      "episodes": 1831.0,
+      "epsilon": 0.355,
+      "gradient_updates": 9501.0,
+      "mean_lines_cleared_100": 0.03,
+      "mean_loss_100": 1.1208445924147963,
+      "mean_max_height_100": 9.75,
+      "mean_reward_10": 45.6,
+      "mean_reward_100": 41.94,
+      "mean_training_reward_100": -4.2025
+    },
+    {
+      "env_step": 44000.0,
+      "episodes": 1861.0,
+      "epsilon": 0.3400000000000001,
+      "gradient_updates": 9751.0,
+      "mean_lines_cleared_100": 0.03,
+      "mean_loss_100": 1.0201079645752906,
+      "mean_max_height_100": 11.1,
+      "mean_reward_10": 45.9,
+      "mean_reward_100": 42.75,
+      "mean_training_reward_100": -3.395
+    },
+    {
+      "env_step": 45000.0,
+      "episodes": 1890.0,
+      "epsilon": 0.32499999999999996,
+      "gradient_updates": 10001.0,
+      "mean_lines_cleared_100": 0.03,
+      "mean_loss_100": 1.0795842950046062,
+      "mean_max_height_100": 11.06,
+      "mean_reward_10": 54.0,
+      "mean_reward_100": 45.43,
+      "mean_training_reward_100": -3.389
+    },
+    {
+      "env_step": 46000.0,
+      "episodes": 1919.0,
+      "epsilon": 0.30999999999999994,
+      "gradient_updates": 10251.0,
+      "mean_lines_cleared_100": 0.1,
+      "mean_loss_100": 1.1411705820262432,
+      "mean_max_height_100": 12.14,
+      "mean_reward_10": 62.0,
+      "mean_reward_100": 48.87,
+      "mean_training_reward_100": -2.8510000000000004
+    },
+    {
+      "env_step": 47000.0,
+      "episodes": 1946.0,
+      "epsilon": 0.29500000000000004,
+      "gradient_updates": 10501.0,
+      "mean_lines_cleared_100": 0.01,
+      "mean_loss_100": 1.2317294552922249,
+      "mean_max_height_100": 10.67,
+      "mean_reward_10": 50.4,
+      "mean_reward_100": 51.84,
+      "mean_training_reward_100": -3.5304999999999995
+    },
+    {
+      "env_step": 48000.0,
+      "episodes": 1974.0,
+      "epsilon": 0.2799999999999999,
+      "gradient_updates": 10751.0,
+      "mean_lines_cleared_100": 0.06,
+      "mean_loss_100": 1.159952142238617,
+      "mean_max_height_100": 9.77,
+      "mean_reward_10": 54.9,
+      "mean_reward_100": 54.06,
+      "mean_training_reward_100": -2.895500000000001
+    },
+    {
+      "env_step": 49000.0,
+      "episodes": 2002.0,
+      "epsilon": 0.265,
+      "gradient_updates": 11001.0,
+      "mean_lines_cleared_100": 0.04,
+      "mean_loss_100": 1.1426087318360805,
+      "mean_max_height_100": 10.54,
+      "mean_reward_10": 48.4,
+      "mean_reward_100": 53.12,
+      "mean_training_reward_100": -3.2110000000000003
+    },
+    {
+      "env_step": 50000.0,
+      "episodes": 2031.0,
+      "epsilon": 0.25,
+      "gradient_updates": 11251.0,
+      "mean_lines_cleared_100": 0.0,
+      "mean_loss_100": 1.0560599374771118,
+      "mean_max_height_100": 11.08,
+      "mean_reward_10": 41.0,
+      "mean_reward_100": 50.59,
+      "mean_training_reward_100": -3.6920000000000006
+    },
+    {
+      "env_step": 51000.0,
+      "episodes": 2056.0,
+      "epsilon": 0.235,
+      "gradient_updates": 11501.0,
+      "mean_lines_cleared_100": 0.07,
+      "mean_loss_100": 1.2467220191657544,
+      "mean_max_height_100": 10.0,
+      "mean_reward_10": 67.3,
+      "mean_reward_100": 54.7,
+      "mean_training_reward_100": -2.8299999999999987
+    },
+    {
+      "env_step": 52000.0,
+      "episodes": 2080.0,
+      "epsilon": 0.21999999999999997,
+      "gradient_updates": 11751.0,
+      "mean_lines_cleared_100": 0.14,
+      "mean_loss_100": 1.1074713861197234,
+      "mean_max_height_100": 10.13,
+      "mean_reward_10": 86.2,
+      "mean_reward_100": 61.13,
+      "mean_training_reward_100": -1.9495000000000002
+    },
+    {
+      "env_step": 53000.0,
+      "episodes": 2105.0,
+      "epsilon": 0.20499999999999996,
+      "gradient_updates": 12001.0,
+      "mean_lines_cleared_100": 0.03,
+      "mean_loss_100": 1.210364272147417,
+      "mean_max_height_100": 11.03,
+      "mean_reward_10": 71.3,
+      "mean_reward_100": 65.42,
+      "mean_training_reward_100": -3.384499999999999
+    },
+    {
+      "env_step": 54000.0,
+      "episodes": 2129.0,
+      "epsilon": 0.18999999999999995,
+      "gradient_updates": 12251.0,
+      "mean_lines_cleared_100": 0.08,
+      "mean_loss_100": 1.1475098118185998,
+      "mean_max_height_100": 9.59,
+      "mean_reward_10": 71.4,
+      "mean_reward_100": 70.75,
+      "mean_training_reward_100": -1.6585000000000005
+    },
+    {
+      "env_step": 55000.0,
+      "episodes": 2152.0,
+      "epsilon": 0.17500000000000004,
+      "gradient_updates": 12501.0,
+      "mean_lines_cleared_100": 0.11,
+      "mean_loss_100": 1.1743439008295535,
+      "mean_max_height_100": 11.8,
+      "mean_reward_10": 80.1,
+      "mean_reward_100": 73.07,
+      "mean_training_reward_100": -1.69
+    },
+    {
+      "env_step": 56000.0,
+      "episodes": 2174.0,
+      "epsilon": 0.15999999999999992,
+      "gradient_updates": 12751.0,
+      "mean_lines_cleared_100": 0.16,
+      "mean_loss_100": 1.1496984155476093,
+      "mean_max_height_100": 10.26,
+      "mean_reward_10": 74.0,
+      "mean_reward_100": 74.74,
+      "mean_training_reward_100": 0.2510000000000001
+    },
+    {
+      "env_step": 57000.0,
+      "episodes": 2197.0,
+      "epsilon": 0.14500000000000002,
+      "gradient_updates": 13001.0,
+      "mean_lines_cleared_100": 0.08,
+      "mean_loss_100": 1.2390706472098827,
+      "mean_max_height_100": 10.57,
+      "mean_reward_10": 82.0,
+      "mean_reward_100": 77.46,
+      "mean_training_reward_100": -1.8054999999999999
+    },
+    {
+      "env_step": 58000.0,
+      "episodes": 2219.0,
+      "epsilon": 0.13,
+      "gradient_updates": 13251.0,
+      "mean_lines_cleared_100": 0.12,
+      "mean_loss_100": 1.1746824844181538,
+      "mean_max_height_100": 9.69,
+      "mean_reward_10": 84.4,
+      "mean_reward_100": 82.05,
+      "mean_training_reward_100": -1.2734999999999999
+    },
+    {
+      "env_step": 59000.0,
+      "episodes": 2239.0,
+      "epsilon": 0.11499999999999999,
+      "gradient_updates": 13501.0,
+      "mean_lines_cleared_100": 0.08,
+      "mean_loss_100": 1.2672443930804729,
+      "mean_max_height_100": 10.67,
+      "mean_reward_10": 97.6,
+      "mean_reward_100": 87.54,
+      "mean_training_reward_100": -1.8204999999999998
+    },
+    {
+      "env_step": 60000.0,
+      "episodes": 2260.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 13751.0,
+      "mean_lines_cleared_100": 0.08,
+      "mean_loss_100": 1.234980685263872,
+      "mean_max_height_100": 9.7,
+      "mean_reward_10": 109.4,
+      "mean_reward_100": 92.2,
+      "mean_training_reward_100": -1.6749999999999998
+    },
+    {
+      "env_step": 61000.0,
+      "episodes": 2280.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 14001.0,
+      "mean_lines_cleared_100": 0.12,
+      "mean_loss_100": 1.3532750980556012,
+      "mean_max_height_100": 10.28,
+      "mean_reward_10": 118.1,
+      "mean_reward_100": 98.77,
+      "mean_training_reward_100": -1.362
+    },
+    {
+      "env_step": 62000.0,
+      "episodes": 2299.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 14251.0,
+      "mean_lines_cleared_100": 0.14,
+      "mean_loss_100": 1.4219717717170715,
+      "mean_max_height_100": 9.68,
+      "mean_reward_10": 91.2,
+      "mean_reward_100": 104.06,
+      "mean_training_reward_100": -1.0719999999999998
+    },
+    {
+      "env_step": 63000.0,
+      "episodes": 2318.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 14501.0,
+      "mean_lines_cleared_100": 0.2,
+      "mean_loss_100": 1.3688657981157304,
+      "mean_max_height_100": 9.52,
+      "mean_reward_10": 121.0,
+      "mean_reward_100": 111.03,
+      "mean_training_reward_100": 0.562
+    },
+    {
+      "env_step": 64000.0,
+      "episodes": 2337.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 14751.0,
+      "mean_lines_cleared_100": 0.2,
+      "mean_loss_100": 1.3045455825328827,
+      "mean_max_height_100": 11.35,
+      "mean_reward_10": 94.5,
+      "mean_reward_100": 112.14,
+      "mean_training_reward_100": 0.4875000000000002
+    },
+    {
+      "env_step": 65000.0,
+      "episodes": 2358.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 15001.0,
+      "mean_lines_cleared_100": 0.05,
+      "mean_loss_100": 1.3585203245282174,
+      "mean_max_height_100": 9.68,
+      "mean_reward_10": 87.9,
+      "mean_reward_100": 113.2,
+      "mean_training_reward_100": -1.972
+    },
+    {
+      "env_step": 66000.0,
+      "episodes": 2379.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 15251.0,
+      "mean_lines_cleared_100": 0.08,
+      "mean_loss_100": 1.3846265959739685,
+      "mean_max_height_100": 10.1,
+      "mean_reward_10": 99.3,
+      "mean_reward_100": 111.23,
+      "mean_training_reward_100": -2.745
+    },
+    {
+      "env_step": 67000.0,
+      "episodes": 2399.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 15501.0,
+      "mean_lines_cleared_100": 0.12,
+      "mean_loss_100": 1.3749818398058415,
+      "mean_max_height_100": 11.25,
+      "mean_reward_10": 110.7,
+      "mean_reward_100": 111.13,
+      "mean_training_reward_100": -1.5075000000000003
+    },
+    {
+      "env_step": 68000.0,
+      "episodes": 2417.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 15751.0,
+      "mean_lines_cleared_100": 0.17,
+      "mean_loss_100": 1.4192293271422387,
+      "mean_max_height_100": 9.81,
+      "mean_reward_10": 130.2,
+      "mean_reward_100": 113.43,
+      "mean_training_reward_100": -0.7914999999999999
+    },
+    {
+      "env_step": 69000.0,
+      "episodes": 2437.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 16001.0,
+      "mean_lines_cleared_100": 0.11,
+      "mean_loss_100": 1.4708976912498475,
+      "mean_max_height_100": 9.78,
+      "mean_reward_10": 116.8,
+      "mean_reward_100": 112.25,
+      "mean_training_reward_100": -1.1870000000000003
+    },
+    {
+      "env_step": 70000.0,
+      "episodes": 2455.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 16251.0,
+      "mean_lines_cleared_100": 0.13,
+      "mean_loss_100": 1.5319767320156097,
+      "mean_max_height_100": 11.18,
+      "mean_reward_10": 115.5,
+      "mean_reward_100": 115.71,
+      "mean_training_reward_100": -1.3970000000000002
+    },
+    {
+      "env_step": 71000.0,
+      "episodes": 2475.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 16501.0,
+      "mean_lines_cleared_100": 0.16,
+      "mean_loss_100": 1.7015566635131836,
+      "mean_max_height_100": 11.47,
+      "mean_reward_10": 113.6,
+      "mean_reward_100": 118.29,
+      "mean_training_reward_100": -1.1404999999999996
+    },
+    {
+      "env_step": 72000.0,
+      "episodes": 2495.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 16751.0,
+      "mean_lines_cleared_100": 0.1,
+      "mean_loss_100": 1.5126901793479919,
+      "mean_max_height_100": 9.7,
+      "mean_reward_10": 104.7,
+      "mean_reward_100": 120.1,
+      "mean_training_reward_100": -1.4750000000000003
+    },
+    {
+      "env_step": 73000.0,
+      "episodes": 2512.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 17001.0,
+      "mean_lines_cleared_100": 0.2,
+      "mean_loss_100": 1.6009233099222184,
+      "mean_max_height_100": 10.19,
+      "mean_reward_10": 142.6,
+      "mean_reward_100": 123.5,
+      "mean_training_reward_100": 0.4615000000000001
+    },
+    {
+      "env_step": 74000.0,
+      "episodes": 2529.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 17251.0,
+      "mean_lines_cleared_100": 0.14,
+      "mean_loss_100": 1.7655364102125168,
+      "mean_max_height_100": 9.7,
+      "mean_reward_10": 168.9,
+      "mean_reward_100": 128.01,
+      "mean_training_reward_100": -1.075
+    },
+    {
+      "env_step": 75000.0,
+      "episodes": 2548.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 17501.0,
+      "mean_lines_cleared_100": 0.13,
+      "mean_loss_100": 1.72960418343544,
+      "mean_max_height_100": 12.74,
+      "mean_reward_10": 128.1,
+      "mean_reward_100": 127.91,
+      "mean_training_reward_100": -1.631
+    },
+    {
+      "env_step": 76000.0,
+      "episodes": 2566.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 17751.0,
+      "mean_lines_cleared_100": 0.15,
+      "mean_loss_100": 1.7040598410367966,
+      "mean_max_height_100": 10.53,
+      "mean_reward_10": 105.8,
+      "mean_reward_100": 128.03,
+      "mean_training_reward_100": -0.08949999999999989
+    },
+    {
+      "env_step": 77000.0,
+      "episodes": 2586.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 18001.0,
+      "mean_lines_cleared_100": 0.12,
+      "mean_loss_100": 1.729794954061508,
+      "mean_max_height_100": 9.98,
+      "mean_reward_10": 125.4,
+      "mean_reward_100": 129.43,
+      "mean_training_reward_100": -1.3169999999999995
+    },
+    {
+      "env_step": 78000.0,
+      "episodes": 2606.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 18251.0,
+      "mean_lines_cleared_100": 0.16,
+      "mean_loss_100": 1.8088405919075012,
+      "mean_max_height_100": 10.13,
+      "mean_reward_10": 127.1,
+      "mean_reward_100": 125.06,
+      "mean_training_reward_100": -0.9394999999999999
+    },
+    {
+      "env_step": 79000.0,
+      "episodes": 2625.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 18501.0,
+      "mean_lines_cleared_100": 0.11,
+      "mean_loss_100": 1.8875295835733414,
+      "mean_max_height_100": 9.82,
+      "mean_reward_10": 100.4,
+      "mean_reward_100": 122.54,
+      "mean_training_reward_100": -1.3929999999999998
+    },
+    {
+      "env_step": 80000.0,
+      "episodes": 2642.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 18751.0,
+      "mean_lines_cleared_100": 0.19,
+      "mean_loss_100": 1.9458859395980834,
+      "mean_max_height_100": 9.08,
+      "mean_reward_10": 162.0,
+      "mean_reward_100": 125.14,
+      "mean_training_reward_100": -0.28200000000000003
+    },
+    {
+      "env_step": 81000.0,
+      "episodes": 2661.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 19001.0,
+      "mean_lines_cleared_100": 0.19,
+      "mean_loss_100": 1.8900412142276763,
+      "mean_max_height_100": 9.71,
+      "mean_reward_10": 130.0,
+      "mean_reward_100": 123.74,
+      "mean_training_reward_100": -0.5765
+    },
+    {
+      "env_step": 82000.0,
+      "episodes": 2680.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 19251.0,
+      "mean_lines_cleared_100": 0.12,
+      "mean_loss_100": 2.007451982498169,
+      "mean_max_height_100": 10.43,
+      "mean_reward_10": 116.4,
+      "mean_reward_100": 125.78,
+      "mean_training_reward_100": -1.3844999999999996
+    },
+    {
+      "env_step": 83000.0,
+      "episodes": 2699.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 19501.0,
+      "mean_lines_cleared_100": 0.11,
+      "mean_loss_100": 1.9298275876045228,
+      "mean_max_height_100": 9.39,
+      "mean_reward_10": 118.2,
+      "mean_reward_100": 128.69,
+      "mean_training_reward_100": -1.3285
+    },
+    {
+      "env_step": 84000.0,
+      "episodes": 2717.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 19751.0,
+      "mean_lines_cleared_100": 0.14,
+      "mean_loss_100": 1.9290854918956757,
+      "mean_max_height_100": 10.54,
+      "mean_reward_10": 123.9,
+      "mean_reward_100": 126.68,
+      "mean_training_reward_100": -0.191
+    },
+    {
+      "env_step": 85000.0,
+      "episodes": 2735.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 20001.0,
+      "mean_lines_cleared_100": 0.1,
+      "mean_loss_100": 1.9884126502275468,
+      "mean_max_height_100": 9.78,
+      "mean_reward_10": 135.2,
+      "mean_reward_100": 130.38,
+      "mean_training_reward_100": -2.4970000000000003
+    },
+    {
+      "env_step": 86000.0,
+      "episodes": 2753.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 20251.0,
+      "mean_lines_cleared_100": 0.09,
+      "mean_loss_100": 2.2235824596881866,
+      "mean_max_height_100": 10.05,
+      "mean_reward_10": 132.5,
+      "mean_reward_100": 130.28,
+      "mean_training_reward_100": -1.6274999999999997
+    },
+    {
+      "env_step": 87000.0,
+      "episodes": 2772.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 20501.0,
+      "mean_lines_cleared_100": 0.11,
+      "mean_loss_100": 2.22562322974205,
+      "mean_max_height_100": 10.01,
+      "mean_reward_10": 113.3,
+      "mean_reward_100": 127.93,
+      "mean_training_reward_100": -1.4214999999999998
+    },
+    {
+      "env_step": 88000.0,
+      "episodes": 2791.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 20751.0,
+      "mean_lines_cleared_100": 0.11,
+      "mean_loss_100": 2.1164478671550753,
+      "mean_max_height_100": 11.2,
+      "mean_reward_10": 135.6,
+      "mean_reward_100": 125.33,
+      "mean_training_reward_100": -1.5999999999999996
+    },
+    {
+      "env_step": 89000.0,
+      "episodes": 2810.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 21001.0,
+      "mean_lines_cleared_100": 0.07,
+      "mean_loss_100": 2.2694485211372375,
+      "mean_max_height_100": 9.65,
+      "mean_reward_10": 117.6,
+      "mean_reward_100": 125.57,
+      "mean_training_reward_100": -1.7674999999999996
+    },
+    {
+      "env_step": 90000.0,
+      "episodes": 2829.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 21251.0,
+      "mean_lines_cleared_100": 0.09,
+      "mean_loss_100": 2.2279190647602083,
+      "mean_max_height_100": 9.05,
+      "mean_reward_10": 120.1,
+      "mean_reward_100": 121.16,
+      "mean_training_reward_100": -1.4775
+    },
+    {
+      "env_step": 91000.0,
+      "episodes": 2849.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 21501.0,
+      "mean_lines_cleared_100": 0.13,
+      "mean_loss_100": 2.3018604421615603,
+      "mean_max_height_100": 8.79,
+      "mean_reward_10": 89.3,
+      "mean_reward_100": 118.38,
+      "mean_training_reward_100": -1.0384999999999998
+    },
+    {
+      "env_step": 92000.0,
+      "episodes": 2867.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 21751.0,
+      "mean_lines_cleared_100": 0.11,
+      "mean_loss_100": 2.2204762065410613,
+      "mean_max_height_100": 9.52,
+      "mean_reward_10": 131.3,
+      "mean_reward_100": 120.17,
+      "mean_training_reward_100": -1.148
+    },
+    {
+      "env_step": 93000.0,
+      "episodes": 2885.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 22001.0,
+      "mean_lines_cleared_100": 0.13,
+      "mean_loss_100": 2.2932390713691713,
+      "mean_max_height_100": 10.51,
+      "mean_reward_10": 135.4,
+      "mean_reward_100": 123.03,
+      "mean_training_reward_100": -1.2964999999999995
+    },
+    {
+      "env_step": 94000.0,
+      "episodes": 2904.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 22251.0,
+      "mean_lines_cleared_100": 0.1,
+      "mean_loss_100": 2.4638088142871855,
+      "mean_max_height_100": 11.05,
+      "mean_reward_10": 110.1,
+      "mean_reward_100": 120.54,
+      "mean_training_reward_100": -1.6774999999999993
+    },
+    {
+      "env_step": 95000.0,
+      "episodes": 2924.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 22501.0,
+      "mean_lines_cleared_100": 0.17,
+      "mean_loss_100": 2.422664090394974,
+      "mean_max_height_100": 10.35,
+      "mean_reward_10": 106.1,
+      "mean_reward_100": 120.19,
+      "mean_training_reward_100": -0.8725000000000002
+    },
+    {
+      "env_step": 96000.0,
+      "episodes": 2942.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 22751.0,
+      "mean_lines_cleared_100": 0.1,
+      "mean_loss_100": 2.3601654875278473,
+      "mean_max_height_100": 10.49,
+      "mean_reward_10": 126.3,
+      "mean_reward_100": 121.02,
+      "mean_training_reward_100": -1.5935000000000001
+    },
+    {
+      "env_step": 97000.0,
+      "episodes": 2959.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 23001.0,
+      "mean_lines_cleared_100": 0.16,
+      "mean_loss_100": 2.3953325080871584,
+      "mean_max_height_100": 11.69,
+      "mean_reward_10": 132.4,
+      "mean_reward_100": 125.86,
+      "mean_training_reward_100": -0.16349999999999965
+    },
+    {
+      "env_step": 98000.0,
+      "episodes": 2978.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 23251.0,
+      "mean_lines_cleared_100": 0.13,
+      "mean_loss_100": 2.45232302904129,
+      "mean_max_height_100": 10.13,
+      "mean_reward_10": 127.4,
+      "mean_reward_100": 125.79,
+      "mean_training_reward_100": -1.2394999999999998
+    },
+    {
+      "env_step": 99000.0,
+      "episodes": 2994.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 23501.0,
+      "mean_lines_cleared_100": 0.11,
+      "mean_loss_100": 2.4807771396636964,
+      "mean_max_height_100": 10.97,
+      "mean_reward_10": 146.7,
+      "mean_reward_100": 132.64,
+      "mean_training_reward_100": -1.5655000000000001
+    },
+    {
+      "env_step": 100000.0,
+      "episodes": 3014.0,
+      "epsilon": 0.09999999999999998,
+      "gradient_updates": 23751.0,
+      "mean_lines_cleared_100": 0.1,
+      "mean_loss_100": 2.4728580152988435,
+      "mean_max_height_100": 10.13,
+      "mean_reward_10": 139.7,
+      "mean_reward_100": 133.26,
+      "mean_training_reward_100": -1.5394999999999994
+    }
+  ],
+  "preset": {
+    "description": "Recommended next run. Keeps line clears as the main signal, makes survival positive, softens height pressure, and makes game over costly.",
+    "name": "shaped_v2_no_suicide"
+  },
+  "reward_config": {
+    "aggregate_height_penalty": 0.0,
+    "game_over_penalty": -100.0,
+    "height_penalty": 0.15,
+    "line_reward": 10.0,
+    "line_reward_power": 2.0,
+    "mode": "shaped",
+    "reward_clip": 200.0,
+    "survival_reward": 1.0
+  },
+  "training": {
+    "best_checkpoint": "models\\dqn_afterstate_shaped_v2_checkpoints\\dqn_afterstate_shaped_v2_best_reward100.pt",
+    "best_logged_reward_100": 133.26,
+    "elapsed_seconds": 956.7351307999925,
+    "env_steps": 100000,
+    "episodes": 3014,
+    "first_logged_loss_mean": 0.0,
+    "first_loss_mean": 5.531562027931213,
+    "gradient_updates": 23751,
+    "last_100_episode_reward_mean": 133.26,
+    "last_100_lines_cleared_mean": 0.1,
+    "last_100_max_height_mean": 10.13,
+    "last_100_training_reward_mean": -1.5394999999999994,
+    "last_10_episode_reward_mean": 139.7,
+    "last_logged_loss_mean": 2.4728580152988435,
+    "last_loss_mean": 2.4728580152988435
+  }
+}

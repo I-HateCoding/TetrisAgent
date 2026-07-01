@@ -1,14 +1,15 @@
-准备一个Python环境
-```
-(base) conda create -n tetris_env python=3.10.20
+环境配置：
+
+```powershell
+conda create -n tetris_env python=3.10
+conda activate tetris_env
+pip install gymnasium tetris_gymnasium numpy opencv-python torch
 ```
 
-安装依赖库
-```
-(tetris-env) pip install gymnasium tetris_gymnasium
+使用 DQN 智能体运行：
+
+```powershell
+conda run -n tetris_env python tetris\main.py --agent dqn --dqn-model .\models\dqn_afterstate.pt --render-mode ansi --delay-ms 0
 ```
 
-运行
-```
-(tetris-env) Python ./tetris/main.py
-```
+将 `.\models\dqn_afterstate.pt` 替换为实际训练好的 DQN 模型路径。
