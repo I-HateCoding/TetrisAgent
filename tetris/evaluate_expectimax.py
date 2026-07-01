@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import random
 import statistics
 
 from expectimax_agent import ExpectimaxAgent
@@ -25,6 +26,18 @@ def parse_args():
         default="expected",
         choices=["expected", "queue"],
         help="Use expected random pieces or the visible queue for lookahead.",
+    )
+    parser.add_argument(
+        "--heuristic-mode",
+        default="auto",
+        choices=["auto", "base", "depth2"],
+        help="Choose base, depth-2, or automatic heuristic weights and penalties.",
+    )
+    parser.add_argument(
+        "--penalty-mode",
+        default="strong",
+        choices=["strong", "weak", "none"],
+        help="Depth-2 nonlinear penalty strength.",
     )
     parser.add_argument("--seed", type=int, default=42, help="First environment seed.")
     parser.add_argument(
@@ -51,6 +64,9 @@ def main():
         sample_chance=args.depth > 1,
         chance_samples=args.chance_samples,
         chance_mode=args.chance_mode,
+        heuristic_mode=args.heuristic_mode,
+        penalty_mode=args.penalty_mode,
+        rng=random.Random(args.seed),
     )
 
     results = []
