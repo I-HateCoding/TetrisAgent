@@ -111,8 +111,8 @@ def parse_args():
     )
     parser.add_argument(
         "--dqn-device",
-        default="cpu",
-        help="PyTorch device for DQN inference, such as cpu or cuda.",
+        default="auto",
+        help="PyTorch device for DQN inference: auto, cpu, or cuda.",
     )
     parser.add_argument(
         "--dqn-epsilon",
