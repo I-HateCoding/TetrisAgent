@@ -49,6 +49,22 @@ class HeuristicWeights:
     height_std: float = -0.20
     game_over: float = -1000.0
 
+# 
+@dataclass(frozen=True)
+class Depth2HeuristicWeights(HeuristicWeights):
+    lines_cleared: float = 9.0
+    complete_lines: float = 2.0
+    aggregate_height: float = -0.72
+    max_height: float = -0.75
+    holes: float = -2.10
+    bumpiness: float = -0.55
+    wells: float = -0.75
+    max_well_depth: float = -0.70
+    row_transitions: float = -0.18
+    column_transitions: float = -0.12
+    blockade_cells: float = -0.65
+    height_std: float = -0.30
+
 
 class ExpectimaxAgent:
     """Choose Tetris placements with heuristic expectimax search.
@@ -70,27 +86,57 @@ class ExpectimaxAgent:
     chance_mode:
         "expected" averages over possible future tetrominoes. "queue" uses the
         actual next tetromino from the environment queue after a simulated step.
+    heuristic_mode:
+        "auto" keeps the default depth-based heuristic choice. "base" uses the
+        depth-1 heuristic at all depths. "depth2" forces the conservative
+        depth-2 heuristic and nonlinear survival penalties.
     """
 
     def __init__(
         self,
         depth: int = 1,
         gamma: float = 0.95,
-        weights: HeuristicWeights = HeuristicWeights(),
+        weights: Optional[HeuristicWeights] = None,
         beam_width: Optional[int] = 8,
         sample_chance: bool = False,
         chance_samples: int = 4,
         chance_mode: str = "expected",
+        heuristic_mode: str = "auto",
+        penalty_mode: str = "strong",
         rng: Optional[random.Random] = None,
     ) -> None:
         self.depth = max(1, int(depth))
         self.gamma = float(gamma)
-        self.weights = weights
+
+        if heuristic_mode not in {"auto", "base", "depth2"}:
+            raise ValueError("heuristic_mode must be 'auto', 'base', or 'depth2'")
+        self.heuristic_mode = heuristic_mode
+        if penalty_mode not in {"strong", "weak", "none"}:
+            raise ValueError("penalty_mode must be 'strong', 'weak', or 'none'")
+        self.penalty_mode = penalty_mode
+
+        if weights is not None:
+            self.weights = weights
+        elif heuristic_mode == "base":
+            self.weights = HeuristicWeights()
+        elif heuristic_mode == "depth2":
+            self.weights = Depth2HeuristicWeights()
+        else:
+            self.weights = Depth2HeuristicWeights() if self.depth >= 2 else HeuristicWeights()
+
+        if heuristic_mode == "base":
+            self.use_depth2_penalty = False
+        elif heuristic_mode == "depth2":
+            self.use_depth2_penalty = True
+        else:
+            self.use_depth2_penalty = self.depth >= 2
+
         self.beam_width = None if beam_width is None else max(1, int(beam_width))
         self.sample_chance = sample_chance
         self.chance_samples = max(1, int(chance_samples))
         if chance_mode not in {"expected", "queue"}:
             raise ValueError("chance_mode must be 'expected' or 'queue'")
+        
         self.chance_mode = chance_mode
         self.rng = rng or random.Random()
 
@@ -179,7 +225,7 @@ class ExpectimaxAgent:
             observation, info = self._current_grouped_observation(env)
             return self._max_value(env, observation, info, depth)
 
-        if self.sample_chance and len(tetrominoes) > self.chance_samples:
+        if self.sample_chance and self.chance_samples < len(tetrominoes):
             tetrominoes = self.rng.sample(tetrominoes, self.chance_samples)
 
         state = self._get_state(env)
@@ -225,12 +271,57 @@ class ExpectimaxAgent:
         scored_actions = []
         for action in actions:
             board = self._board_after_action(observation, action)
-            value = self.evaluate_board(board, env=env) if board is not None else -math.inf
-            scored_actions.append((value, action))
+            if board is None:
+                scored_actions.append((action, -math.inf, None))
+                continue
+            features = self.extract_features(board, env)
+            value = self.evaluate_board(board, env=env)
+            scored_actions.append((action, value, features))
 
-        scored_actions.sort(reverse=True)
-        return [action for _, action in scored_actions[: self.beam_width]]
+        if not any(features is not None for _, _, features in scored_actions):
+            return actions[: self.beam_width]
 
+        selected = []
+        seen = set()
+
+        def add_action(action: int) -> None:
+            if action not in seen and len(selected) < self.beam_width:
+                selected.append(action)
+                seen.add(action)
+
+        # Keep a diverse beam so lookahead is not trapped by one short-term score.
+        rankers = [
+            lambda item: (-item[1], item[0]),
+            lambda item: (
+                item[2].holes if item[2] is not None else math.inf,
+                -item[1],
+                item[0],
+            ),
+            lambda item: (
+                item[2].max_height if item[2] is not None else math.inf,
+                -item[1],
+                item[0],
+            ),
+            lambda item: (
+                item[2].bumpiness if item[2] is not None else math.inf,
+                -item[1],
+                item[0],
+            ),
+            lambda item: (
+                -(item[2].complete_lines if item[2] is not None else -math.inf),
+                -item[1],
+                item[0],
+            ),
+        ]
+        for ranker in rankers:
+            add_action(min(scored_actions, key=ranker)[0])
+
+        for action, _, _ in sorted(scored_actions, key=lambda item: (-item[1], item[0])):
+            add_action(action)
+
+        return selected
+
+    # heuristic evaluation
     def evaluate_board(
         self,
         board: Any,
@@ -258,8 +349,26 @@ class ExpectimaxAgent:
         )
         if game_over:
             value += self.weights.game_over
+        if self.use_depth2_penalty and self.penalty_mode != "none":
+            if self.penalty_mode == "strong":
+                holes_square_weight = -0.15
+                height_danger_weight = -20.0
+                holes_danger_weight = -10.0
+            elif self.penalty_mode == "weak":
+                holes_square_weight = -0.05
+                height_danger_weight = -8.0
+                holes_danger_weight = -4.0
+
+            value += holes_square_weight * (features.holes**2)
+
+            if features.max_height >= 16:
+                value += height_danger_weight * (features.max_height - 15)
+
+            if features.holes >= 8:
+                value += holes_danger_weight * (features.holes - 7)
         return float(value)
 
+    # extract features
     def extract_features(self, board: Any, env: Any = None) -> BoardFeatures:
         matrix = self._playable_board(board, env)
         occupied = matrix > 0

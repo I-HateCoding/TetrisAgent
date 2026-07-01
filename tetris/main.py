@@ -1,4 +1,5 @@
 import argparse
+import random
 import time
 from pathlib import Path
 
@@ -84,6 +85,20 @@ def parse_args():
         choices=["expected", "queue"],
         help="Use expected random pieces or the visible queue for lookahead.",
     )
+    parser.add_argument(
+        "--heuristic-mode",
+        default="auto",
+        choices=["auto", "base", "depth2"],
+        help="Choose base, depth-2, or automatic heuristic weights and penalties.",
+    )
+
+    parser.add_argument(
+        "--penalty-mode",
+        default="strong",
+        choices=["strong", "weak", "none"],
+        help="Depth-2 nonlinear penalty strength.",
+    )
+
     parser.add_argument("--seed", type=int, default=42, help="Environment random seed.")
     parser.add_argument(
         "--render-mode",
@@ -123,15 +138,16 @@ def parse_args():
     return parser.parse_args()
 
 
-def build_agent(args):
-    if args.agent == "expectimax":
-        return ExpectimaxAgent(
-            depth=args.depth,
-            beam_width=args.beam_width,
-            sample_chance=args.depth > 1,
-            chance_samples=args.chance_samples,
-            chance_mode=args.chance_mode,
-        )
+def main():
+    args = parse_args()
+    env = make_env(args.render_mode)
+    agent = ExpectimaxAgent(
+        depth=args.depth,
+        beam_width=args.beam_width,
+        sample_chance=args.depth > 1,
+        chance_samples=args.chance_samples,
+        chance_mode=args.chance_mode,
+    )
 
     if args.dqn_model is None:
         raise ValueError("--dqn-model is required when --agent dqn is selected.")
