@@ -16,3 +16,6 @@ Thumbs.db
 tetris/*results*.csv
 tetris/*smoke*.csv
 tetris/verify_depth1.csv
+
+models/*.pt
+models/*_checkpoints/
