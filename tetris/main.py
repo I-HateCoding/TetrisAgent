@@ -1,17 +1,29 @@
 import argparse
 import random
 import time
-
-import cv2
-import gymnasium as gym
-from tetris_gymnasium.wrappers.grouped import GroupedActionsObservations
+from pathlib import Path
 
 from expectimax_agent import ExpectimaxAgent
 
 
 def make_env(render_mode):
+    import gymnasium as gym
+    from tetris_gymnasium.wrappers.grouped import GroupedActionsObservations
+
     env = gym.make("tetris_gymnasium/Tetris", render_mode=render_mode)
     return GroupedActionsObservations(env)
+
+
+def wait_for_frame(delay_ms):
+    if delay_ms <= 0:
+        return
+
+    try:
+        import cv2
+
+        cv2.waitKey(delay_ms)
+    except ImportError:
+        time.sleep(delay_ms / 1000.0)
 
 
 def run_episode(env, agent, seed=42, delay_ms=100, max_steps=None):
@@ -33,8 +45,7 @@ def run_episode(env, agent, seed=42, delay_ms=100, max_steps=None):
         total_reward += float(reward)
         steps += 1
 
-        if delay_ms > 0:
-            cv2.waitKey(delay_ms)
+        wait_for_frame(delay_ms)
         if max_steps is not None and steps >= max_steps:
             break
 
@@ -48,7 +59,13 @@ def run_episode(env, agent, seed=42, delay_ms=100, max_steps=None):
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Run a Tetris Expectimax agent.")
+    parser = argparse.ArgumentParser(description="Run a Tetris placement agent.")
+    parser.add_argument(
+        "--agent",
+        default="expectimax",
+        choices=["expectimax", "dqn"],
+        help="Agent model to use for action selection.",
+    )
     parser.add_argument("--depth", type=int, default=1, help="Expectimax search depth.")
     parser.add_argument(
         "--beam-width",
@@ -101,22 +118,56 @@ def parse_args():
         default=None,
         help="Optional safety limit for one episode.",
     )
+    parser.add_argument(
+        "--dqn-model",
+        type=Path,
+        default=None,
+        help="Path to a saved PyTorch DQN model or checkpoint.",
+    )
+    parser.add_argument(
+        "--dqn-device",
+        default="auto",
+        help="PyTorch device for DQN inference: auto, cpu, or cuda.",
+    )
+    parser.add_argument(
+        "--dqn-epsilon",
+        type=float,
+        default=0.0,
+        help="Exploration probability for DQN action selection.",
+    )
     return parser.parse_args()
+
+
+def build_agent(args):
+    if args.agent == "expectimax":
+        return ExpectimaxAgent(
+            depth=args.depth,
+            beam_width=args.beam_width,
+            sample_chance=args.depth > 1,
+            chance_samples=args.chance_samples,
+            chance_mode=args.chance_mode,
+            heuristic_mode=args.heuristic_mode,
+            penalty_mode=args.penalty_mode,
+            rng=random.Random(args.seed),
+        )
+
+    if args.dqn_model is None:
+        raise ValueError("--dqn-model is required when --agent dqn is selected.")
+
+    from dqn_agent import DQNAgent
+
+    return DQNAgent(
+        model_path=args.dqn_model,
+        device=args.dqn_device,
+        epsilon=args.dqn_epsilon,
+        rng=random.Random(args.seed),
+    )
 
 
 def main():
     args = parse_args()
+    agent = build_agent(args)
     env = make_env(args.render_mode)
-    agent = ExpectimaxAgent(
-        depth=args.depth,
-        beam_width=args.beam_width,
-        sample_chance=args.depth > 1,
-        chance_samples=args.chance_samples,
-        chance_mode=args.chance_mode,
-        heuristic_mode=args.heuristic_mode,
-        penalty_mode=args.penalty_mode,
-        rng=random.Random(args.seed),
-    )
 
     try:
         result = run_episode(
