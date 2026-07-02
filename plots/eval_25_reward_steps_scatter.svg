@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+  <style>
+    .bg { fill: #ffffff; }
+    .grid { stroke: #bfc7d1; stroke-width: 1.5; stroke-dasharray: 8 8; opacity: 0.6; }
+    .axis { stroke: #1a1a1a; stroke-width: 2.5; }
+    .point { fill: #2f79ad; opacity: 0.95; }
+    .focus { fill: #2f79ad; stroke: #111111; stroke-width: 3; }
+    .outlier { fill: #4c95c4; }
+    .title { font: 700 38px 'Segoe UI', Arial, sans-serif; fill: #111111; }
+    .label { font: 18px 'Segoe UI', Arial, sans-serif; fill: #111111; }
+    .tick { font: 15px 'Segoe UI', Arial, sans-serif; fill: #111111; }
+    .text { font: 16px 'Segoe UI', Arial, sans-serif; fill: #222222; }
+    .note { font: 17px 'Segoe UI', Arial, sans-serif; fill: #4b5563; }
+    .arrow { stroke: #111111; stroke-width: 2.5; fill: none; }
+  </style>
+  <rect class="bg" x="0" y="0" width="1600" height="1100"/>
+  <text class="title" x="800" y="72" text-anchor="middle">Reward vs Steps on 25 Episodes</text>
+
+  <line class="grid" x1="150" y1="920" x2="1480" y2="920"/>
+  <line class="grid" x1="150" y1="760" x2="1480" y2="760"/>
+  <line class="grid" x1="150" y1="600" x2="1480" y2="600"/>
+  <line class="grid" x1="150" y1="440" x2="1480" y2="440"/>
+  <line class="grid" x1="150" y1="280" x2="1480" y2="280"/>
+  <line class="grid" x1="150" y1="120" x2="1480" y2="120"/>
+
+  <line class="grid" x1="250" y1="120" x2="250" y2="920"/>
+  <line class="grid" x1="500" y1="120" x2="500" y2="920"/>
+  <line class="grid" x1="750" y1="120" x2="750" y2="920"/>
+  <line class="grid" x1="1000" y1="120" x2="1000" y2="920"/>
+  <line class="grid" x1="1250" y1="120" x2="1250" y2="920"/>
+
+  <line class="axis" x1="150" y1="920" x2="1480" y2="920"/>
+  <line class="axis" x1="150" y1="120" x2="150" y2="920"/>
+
+  <text class="tick" x="118" y="925">0</text>
+  <text class="tick" x="94" y="765">50k</text>
+  <text class="tick" x="88" y="605">100k</text>
+  <text class="tick" x="88" y="445">150k</text>
+  <text class="tick" x="88" y="285">200k</text>
+  <text class="tick" x="88" y="125">250k</text>
+
+  <text class="tick" x="230" y="955">0</text>
+  <text class="tick" x="468" y="955">10k</text>
+  <text class="tick" x="713" y="955">20k</text>
+  <text class="tick" x="958" y="955">30k</text>
+  <text class="tick" x="1203" y="955">40k</text>
+
+  <text class="label" x="815" y="1015" text-anchor="middle">Steps</text>
+  <g transform="translate(46,560) rotate(-90)">
+    <text class="label" text-anchor="middle">Reward</text>
+  </g>
+
+  <circle class="point" cx="590" cy="646.8" r="14"/>
+  <circle class="point" cx="342" cy="863.7" r="12"/>
+  <circle class="point" cx="508" cy="730.1" r="13"/>
+  <circle class="point" cx="267" cy="909.4" r="10"/>
+  <circle class="point" cx="553" cy="687.8" r="13"/>
+  <circle class="point" cx="445" cy="787.2" r="12"/>
+  <circle class="point" cx="275" cy="904.9" r="10"/>
+  <circle class="point" cx="369" cy="837.7" r="11"/>
+  <circle class="point" cx="340" cy="866.5" r="11"/>
+  <circle class="point" cx="561" cy="681.4" r="13"/>
+  <circle class="point" cx="421" cy="807.5" r="11"/>
+  <circle class="focus" cx="583" cy="661.3" r="18"/>
+  <circle class="point" cx="838" cy="472.1" r="14"/>
+  <circle class="point" cx="411" cy="815.5" r="11"/>
+  <circle class="point" cx="1234" cy="191.0" r="16"/>
+  <circle class="point" cx="213" cy="911.1" r="10"/>
+  <circle class="point" cx="718" cy="560.1" r="13"/>
+  <circle class="point" cx="431" cy="795.3" r="11"/>
+  <circle class="point" cx="959" cy="387.5" r="15"/>
+  <circle class="point" cx="1195" cy="214.6" r="16"/>
+  <circle class="point" cx="1247" cy="178.6" r="16"/>
+  <circle class="point" cx="336" cy="869.4" r="11"/>
+  <circle class="point" cx="953" cy="391.1" r="15"/>
+  <circle class="point" cx="533" cy="711.8" r="13"/>
+
+  <circle class="outlier" cx="1480" cy="120" r="16"/>
+  <path class="arrow" d="M1300 165 C1350 150, 1400 138, 1458 126"/>
+  <text class="text" x="1005" y="160">Ep05 outlier: (71,825 steps, 417,044 reward)</text>
+
+  <path class="arrow" d="M690 540 C650 565, 620 598, 596 646"/>
+  <text class="text" x="764" y="532">Episode 18</text>
+  <text class="text" x="764" y="558">(19,220, 112,729)</text>
+  <text class="text" x="610" y="612" font-weight="700">Representative point</text>
+
+  <text class="note" x="180" y="1060">Zoomed axes highlight the main cluster. One extreme high-score episode is shown separately on the right edge.</text>
+  <text class="note" x="180" y="1086">Reward and steps are almost perfectly correlated in this sample because longer survival directly yields more placements and more reward.</text>
+</svg>

@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200">
+  <style>
+    .bg { fill: #f3f6fb; }
+    .panel { fill: #9198a3; stroke: #7d8794; stroke-width: 4; }
+    .board { fill: #0a0a0b; stroke: #2d3340; stroke-width: 6; }
+    .grid { stroke: #23262d; stroke-width: 1; }
+    .next { fill: #7f8896; stroke: #5b6573; stroke-width: 5; }
+    .box { fill: #ffffff; stroke: #bfd0e4; stroke-width: 2; }
+    .call-red { fill: #ef4b45; }
+    .call-blue { fill: #2f6ce0; }
+    .call-purple { fill: #a559f0; }
+    .call-orange { fill: #de8604; }
+    .call-green { fill: #23a754; }
+    .title { font: 700 42px 'Segoe UI', Arial, sans-serif; fill: #1f2937; }
+    .small { font: 18px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+    .label { font: 700 34px 'Segoe UI', Arial, sans-serif; }
+    .note { font: 24px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+    .height-num { font: 22px 'Segoe UI', Arial, sans-serif; fill: #2754d7; font-weight: 700; }
+    .height-label { font: 30px 'Segoe UI', Arial, sans-serif; fill: #2754d7; font-weight: 700; }
+    .arrow-red { stroke: #ef4b45; }
+    .arrow-blue { stroke: #2f6ce0; }
+    .arrow-purple { stroke: #a559f0; }
+    .arrow-orange { stroke: #de8604; }
+    .arrow-green { stroke: #23a754; }
+    .arrow { fill: none; stroke-width: 6; stroke-linecap: round; }
+    .hole { fill: none; stroke: #ef4b45; stroke-width: 6; }
+    .bump { fill: none; stroke: #ffcf33; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+    .column { fill: none; stroke: #a559f0; stroke-width: 7; stroke-linecap: round; }
+    .full-line { fill: none; stroke: #23a754; stroke-width: 8; }
+  </style>
+  <rect class="bg" x="0" y="0" width="1800" height="1200"/>
+  <text class="title" x="70" y="64">Board Features Used by the DQN</text>
+
+  <rect class="panel" x="80" y="90" width="840" height="1040" rx="2"/>
+  <rect class="board" x="150" y="180" width="460" height="820" rx="4"/>
+
+  <g>
+    <line class="grid" x1="196" y1="180" x2="196" y2="1000"/>
+    <line class="grid" x1="242" y1="180" x2="242" y2="1000"/>
+    <line class="grid" x1="288" y1="180" x2="288" y2="1000"/>
+    <line class="grid" x1="334" y1="180" x2="334" y2="1000"/>
+    <line class="grid" x1="380" y1="180" x2="380" y2="1000"/>
+    <line class="grid" x1="426" y1="180" x2="426" y2="1000"/>
+    <line class="grid" x1="472" y1="180" x2="472" y2="1000"/>
+    <line class="grid" x1="518" y1="180" x2="518" y2="1000"/>
+    <line class="grid" x1="564" y1="180" x2="564" y2="1000"/>
+    <line class="grid" x1="150" y1="221" x2="610" y2="221"/>
+    <line class="grid" x1="150" y1="262" x2="610" y2="262"/>
+    <line class="grid" x1="150" y1="303" x2="610" y2="303"/>
+    <line class="grid" x1="150" y1="344" x2="610" y2="344"/>
+    <line class="grid" x1="150" y1="385" x2="610" y2="385"/>
+    <line class="grid" x1="150" y1="426" x2="610" y2="426"/>
+    <line class="grid" x1="150" y1="467" x2="610" y2="467"/>
+    <line class="grid" x1="150" y1="508" x2="610" y2="508"/>
+    <line class="grid" x1="150" y1="549" x2="610" y2="549"/>
+    <line class="grid" x1="150" y1="590" x2="610" y2="590"/>
+    <line class="grid" x1="150" y1="631" x2="610" y2="631"/>
+    <line class="grid" x1="150" y1="672" x2="610" y2="672"/>
+    <line class="grid" x1="150" y1="713" x2="610" y2="713"/>
+    <line class="grid" x1="150" y1="754" x2="610" y2="754"/>
+    <line class="grid" x1="150" y1="795" x2="610" y2="795"/>
+    <line class="grid" x1="150" y1="836" x2="610" y2="836"/>
+    <line class="grid" x1="150" y1="877" x2="610" y2="877"/>
+    <line class="grid" x1="150" y1="918" x2="610" y2="918"/>
+    <line class="grid" x1="150" y1="959" x2="610" y2="959"/>
+  </g>
+
+  <!-- stylized blocks -->
+  <g stroke="#101114" stroke-width="4">
+    <rect x="150" y="959" width="46" height="41" fill="#35d9ff"/>
+    <rect x="196" y="959" width="46" height="41" fill="#f6f833"/>
+    <rect x="242" y="959" width="46" height="41" fill="#b324ff"/>
+    <rect x="288" y="959" width="46" height="41" fill="#43ef2d"/>
+    <rect x="334" y="959" width="46" height="41" fill="#ff2323"/>
+    <rect x="380" y="959" width="46" height="41" fill="#2845ff"/>
+    <rect x="426" y="959" width="46" height="41" fill="#ffac23"/>
+    <rect x="472" y="959" width="46" height="41" fill="#35d9ff"/>
+    <rect x="518" y="959" width="46" height="41" fill="#f6f833"/>
+    <rect x="564" y="959" width="46" height="41" fill="#b324ff"/>
+
+    <rect x="150" y="918" width="46" height="41" fill="#ff2323"/>
+    <rect x="196" y="918" width="46" height="41" fill="#2845ff"/>
+    <rect x="242" y="918" width="46" height="41" fill="#ffac23"/>
+    <rect x="288" y="918" width="46" height="41" fill="#35d9ff"/>
+    <rect x="334" y="918" width="46" height="41" fill="#f6f833"/>
+    <rect x="380" y="918" width="46" height="41" fill="#b324ff"/>
+    <rect x="426" y="918" width="46" height="41" fill="#43ef2d"/>
+    <rect x="472" y="918" width="46" height="41" fill="#ff2323"/>
+    <rect x="518" y="918" width="46" height="41" fill="#2845ff"/>
+    <rect x="564" y="918" width="46" height="41" fill="#ffac23"/>
+
+    <rect x="150" y="877" width="46" height="41" fill="#43ef2d"/>
+    <rect x="242" y="877" width="46" height="41" fill="#2845ff"/>
+    <rect x="288" y="877" width="46" height="41" fill="#ffac23"/>
+    <rect x="334" y="877" width="46" height="41" fill="#35d9ff"/>
+    <rect x="380" y="877" width="46" height="41" fill="#f6f833"/>
+    <rect x="426" y="877" width="46" height="41" fill="#b324ff"/>
+    <rect x="472" y="877" width="46" height="41" fill="#43ef2d"/>
+    <rect x="518" y="877" width="46" height="41" fill="#ff2323"/>
+    <rect x="564" y="877" width="46" height="41" fill="#2845ff"/>
+
+    <rect x="150" y="836" width="46" height="41" fill="#b324ff"/>
+    <rect x="196" y="836" width="46" height="41" fill="#43ef2d"/>
+    <rect x="288" y="836" width="46" height="41" fill="#2845ff"/>
+    <rect x="334" y="836" width="46" height="41" fill="#ffac23"/>
+    <rect x="426" y="836" width="46" height="41" fill="#f6f833"/>
+    <rect x="472" y="836" width="46" height="41" fill="#b324ff"/>
+    <rect x="518" y="836" width="46" height="41" fill="#43ef2d"/>
+    <rect x="564" y="836" width="46" height="41" fill="#ff2323"/>
+
+    <rect x="196" y="795" width="46" height="41" fill="#b324ff"/>
+    <rect x="242" y="795" width="46" height="41" fill="#43ef2d"/>
+    <rect x="288" y="795" width="46" height="41" fill="#ff2323"/>
+    <rect x="380" y="795" width="46" height="41" fill="#35d9ff"/>
+    <rect x="426" y="795" width="46" height="41" fill="#f6f833"/>
+    <rect x="472" y="795" width="46" height="41" fill="#b324ff"/>
+    <rect x="518" y="795" width="46" height="41" fill="#43ef2d"/>
+
+    <rect x="196" y="754" width="46" height="41" fill="#f6f833"/>
+    <rect x="242" y="754" width="46" height="41" fill="#b324ff"/>
+    <rect x="334" y="754" width="46" height="41" fill="#ff2323"/>
+    <rect x="380" y="754" width="46" height="41" fill="#35d9ff"/>
+    <rect x="472" y="754" width="46" height="41" fill="#ffac23"/>
+    <rect x="518" y="754" width="46" height="41" fill="#35d9ff"/>
+    <rect x="564" y="754" width="46" height="41" fill="#f6f833"/>
+
+    <rect x="242" y="713" width="46" height="41" fill="#f6f833"/>
+    <rect x="334" y="713" width="46" height="41" fill="#43ef2d"/>
+    <rect x="472" y="713" width="46" height="41" fill="#2845ff"/>
+    <rect x="518" y="713" width="46" height="41" fill="#ffac23"/>
+
+    <rect x="242" y="672" width="46" height="41" fill="#35d9ff"/>
+    <rect x="334" y="672" width="46" height="41" fill="#ffac23"/>
+    <rect x="472" y="672" width="46" height="41" fill="#f6f833"/>
+    <rect x="518" y="672" width="46" height="41" fill="#ff2323"/>
+  </g>
+
+  <rect class="next" x="660" y="190" width="190" height="180" rx="2"/>
+  <text x="755" y="250" text-anchor="middle" fill="#f3f4f6" font-size="30" font-family="Segoe UI, Arial, sans-serif" font-weight="700">NEXT</text>
+  <rect x="700" y="270" width="120" height="80" fill="#0b0c10" stroke="#293040" stroke-width="4"/>
+  <rect x="722" y="307" width="20" height="20" fill="#8920ff" stroke="#000" stroke-width="2"/>
+  <rect x="744" y="285" width="20" height="20" fill="#8920ff" stroke="#000" stroke-width="2"/>
+  <rect x="744" y="307" width="20" height="20" fill="#8920ff" stroke="#000" stroke-width="2"/>
+  <rect x="766" y="307" width="20" height="20" fill="#8920ff" stroke="#000" stroke-width="2"/>
+
+  <!-- feature annotations on board -->
+  <circle class="hole" cx="219" cy="856" r="16"/>
+  <circle class="hole" cx="265" cy="815" r="16"/>
+  <circle class="hole" cx="357" cy="815" r="16"/>
+  <circle class="hole" cx="357" cy="897" r="16"/>
+  <circle class="hole" cx="495" cy="733" r="16"/>
+
+  <polyline class="bump" points="173,835 219,733 265,631 311,835 357,692 403,856 449,754 495,631 541,856 587,795"/>
+  <line class="column" x1="542" y1="632" x2="542" y2="1000"/>
+  <line class="full-line" x1="150" y1="979" x2="610" y2="979"/>
+
+  <!-- callout arrows -->
+  <path class="arrow arrow-red" d="M262 855 C460 690, 680 410, 980 300"/>
+  <path class="arrow arrow-blue" d="M470 690 C720 540, 800 500, 980 500"/>
+  <path class="arrow arrow-purple" d="M542 632 C760 580, 840 650, 980 700"/>
+  <path class="arrow arrow-orange" d="M496 650 C760 720, 860 790, 980 900"/>
+  <path class="arrow arrow-green" d="M490 980 C760 980, 860 1000, 980 1100"/>
+
+  <!-- right boxes -->
+  <g transform="translate(980,250)">
+    <rect class="box" x="0" y="0" width="690" height="140"/>
+    <rect class="call-red" x="0" y="0" width="14" height="140"/>
+    <text class="label" x="34" y="48" fill="#ef4b45">Holes</text>
+    <text class="note" x="34" y="90">Empty cells below at least one filled cell</text>
+  </g>
+
+  <g transform="translate(980,470)">
+    <rect class="box" x="0" y="0" width="690" height="140"/>
+    <rect class="call-blue" x="0" y="0" width="14" height="140"/>
+    <text class="label" x="34" y="48" fill="#2f6ce0">Aggregate Height</text>
+    <text class="note" x="34" y="90">Sum of all column heights = 63</text>
+  </g>
+
+  <g transform="translate(980,690)">
+    <rect class="box" x="0" y="0" width="690" height="140"/>
+    <rect class="call-purple" x="0" y="0" width="14" height="140"/>
+    <text class="label" x="34" y="48" fill="#a559f0">Max Height</text>
+    <text class="note" x="34" y="90">Tallest column height = 10</text>
+  </g>
+
+  <g transform="translate(980,910)">
+    <rect class="box" x="0" y="0" width="690" height="140"/>
+    <rect class="call-orange" x="0" y="0" width="14" height="140"/>
+    <text class="label" x="34" y="48" fill="#de8604">Bumpiness</text>
+    <text class="note" x="34" y="90">Neighbor height differences, summed = 30</text>
+  </g>
+
+  <g transform="translate(980,1130)">
+    <rect class="box" x="0" y="0" width="690" height="140"/>
+    <rect class="call-green" x="0" y="0" width="14" height="140"/>
+    <text class="label" x="34" y="48" fill="#23a754">Complete Line</text>
+    <text class="note" x="34" y="90">A full row ready to clear</text>
+  </g>
+
+  <text class="height-num" x="173" y="1088" text-anchor="middle">4</text>
+  <text class="height-num" x="219" y="1088" text-anchor="middle">6</text>
+  <text class="height-num" x="265" y="1088" text-anchor="middle">9</text>
+  <text class="height-num" x="311" y="1088" text-anchor="middle">5</text>
+  <text class="height-num" x="357" y="1088" text-anchor="middle">8</text>
+  <text class="height-num" x="403" y="1088" text-anchor="middle">3</text>
+  <text class="height-num" x="449" y="1088" text-anchor="middle">7</text>
+  <text class="height-num" x="495" y="1088" text-anchor="middle">10</text>
+  <text class="height-num" x="541" y="1088" text-anchor="middle">5</text>
+  <text class="height-num" x="587" y="1088" text-anchor="middle">6</text>
+  <text class="height-label" x="380" y="1140" text-anchor="middle">Column heights</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760">
+  <style>
+    .bg { fill: #ffffff; }
+    .grid { stroke: #cad3de; stroke-width: 1.5; stroke-dasharray: 8 8; opacity: 0.65; }
+    .axis { stroke: #111111; stroke-width: 2.6; }
+    .box { fill: #377eb1; fill-opacity: 0.18; stroke: #377eb1; stroke-width: 2.6; }
+    .median { stroke: #111111; stroke-width: 3; }
+    .whisker { stroke: #111111; stroke-width: 2.4; }
+    .outlier { fill: #377eb1; stroke: #111111; stroke-width: 1.4; }
+    .title { font: 700 38px 'Segoe UI', Arial, sans-serif; fill: #151515; }
+    .tick { font: 15px 'Segoe UI', Arial, sans-serif; fill: #222222; }
+    .label { font: 18px 'Segoe UI', Arial, sans-serif; fill: #202020; }
+    .panel-title { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #1b1b1b; }
+    .note { font: 16px 'Segoe UI', Arial, sans-serif; fill: #536273; }
+    .stat { font: 15px 'Segoe UI', Arial, sans-serif; fill: #202020; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1080"/>
+  <text class="title" x="800" y="68" text-anchor="middle">Reward Distribution on 25 Episodes</text>
+
+  <line class="grid" x1="140" y1="520" x2="1500" y2="520"/>
+  <line class="grid" x1="140" y1="442" x2="1500" y2="442"/>
+  <line class="grid" x1="140" y1="364" x2="1500" y2="364"/>
+  <line class="grid" x1="140" y1="286" x2="1500" y2="286"/>
+  <line class="grid" x1="140" y1="208" x2="1500" y2="208"/>
+  <line class="grid" x1="140" y1="130" x2="1500" y2="130"/>
+  <line class="axis" x1="140" y1="520" x2="1500" y2="520"/>
+  <line class="axis" x1="140" y1="120" x2="140" y2="520"/>
+  <text class="tick" x="100" y="526">0</text>
+  <text class="tick" x="55" y="448">80k</text>
+  <text class="tick" x="48" y="370">160k</text>
+  <text class="tick" x="48" y="292">240k</text>
+  <text class="tick" x="48" y="214">320k</text>
+  <text class="tick" x="48" y="136">400k</text>
+
+  <line class="whisker" x1="820" y1="517.1" x2="820" y2="266.9"/>
+  <line class="whisker" x1="785" y1="517.1" x2="855" y2="517.1"/>
+  <line class="whisker" x1="785" y1="266.9" x2="855" y2="266.9"/>
+  <rect class="box" x="740" y="380.0" width="160" height="114.3" rx="8"/>
+  <line class="median" x1="740" y1="419.4" x2="900" y2="419.4"/>
+  <circle class="outlier" cx="820" cy="130" r="8"/>
+  <text class="label" x="820" y="566" text-anchor="middle">Reward</text>
+  <text class="note" x="846" y="137">Outlier: 417,044</text>
+  <text class="stat" x="1010" y="258">min(inlier)=2,874</text>
+  <text class="stat" x="1010" y="300">q1=25,730</text>
+  <text class="stat" x="1010" y="342">median=64,986</text>
+  <text class="stat" x="1010" y="384">q3=139,983</text>
+  <text class="stat" x="1010" y="426">max(inlier)=253,940</text>
+
+  <text class="note" x="240" y="662">The box spans the interquartile range (Q1 to Q3), the center line is the median, and the whiskers show the non-outlier range.</text>
+  <text class="note" x="240" y="688">The high outlier confirms that a single exceptional episode can strongly affect the mean, so the report should also discuss median and P25 reward.</text>
+</svg>

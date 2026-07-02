@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="640" viewBox="0 0 860 640">
+  <style>
+    .bg { fill: #ffffff; }
+    .panel { fill: #ffffff; stroke: none; }
+    .grid { stroke: #bfc7d1; stroke-width: 1.4; stroke-dasharray: 7 7; opacity: 0.6; }
+    .axis { stroke: #111111; stroke-width: 1.9; }
+    .reward { fill: none; stroke: #2f79ad; stroke-width: 3.4; }
+    .steps { fill: none; stroke: #4c95c4; stroke-width: 3.4; }
+    .reward-dot { fill: #2f79ad; }
+    .steps-dot { fill: #4c95c4; }
+    .title { font: 700 30px 'Segoe UI', Arial, sans-serif; fill: #111111; }
+    .subtitle { font: 15px 'Segoe UI', Arial, sans-serif; fill: #4b5563; }
+    .label { font: 14px 'Segoe UI', Arial, sans-serif; fill: #111111; }
+    .small { font: 12px 'Segoe UI', Arial, sans-serif; fill: #374151; }
+    .stat { font: 14px 'Segoe UI', Arial, sans-serif; fill: #111111; }
+    .legend { font: 13px 'Segoe UI', Arial, sans-serif; fill: #111111; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="860" height="640" />
+  <text class="title" x="48" y="42">DQN Evaluation on 25 Episodes</text>
+  <text class="subtitle" x="48" y="66">Reward and steps per episode. Large variance remains, but the overall level is already in the thousands to tens of thousands.</text>
+
+  <rect class="panel" x="36" y="92" width="788" height="240" rx="10" />
+  <text class="label" x="52" y="118">Reward</text>
+  <line class="grid" x1="70" y1="260" x2="790" y2="260" />
+  <line class="grid" x1="70" y1="205" x2="790" y2="205" />
+  <line class="grid" x1="70" y1="150" x2="790" y2="150" />
+  <line class="grid" x1="70" y1="95" x2="790" y2="95" />
+  <line class="axis" x1="70" y1="260" x2="790" y2="260" />
+  <line class="axis" x1="70" y1="40" x2="70" y2="260" />
+  <polyline class="reward" points="70.0,214.9 100.0,250.7 130.0,228.7 160.0,258.2 190.0,40.0 220.0,221.7 250.0,237.9 280.0,257.5 310.0,246.4 340.0,251.2 370.0,220.6 400.0,241.3 430.0,217.3 460.0,186.2 490.0,242.6 520.0,128.3 550.0,258.5 580.0,200.5 610.0,239.2 640.0,172.3 670.0,132.0 700.0,126.0 730.0,251.6 760.0,173.0 790.0,225.7" />
+  <circle class="reward-dot" cx="190" cy="40" r="4.5" />
+  <circle class="reward-dot" cx="550" cy="258.5" r="4.5" />
+  <text class="small" x="18" y="262">0</text>
+  <text class="small" x="18" y="207">104k</text>
+  <text class="small" x="18" y="152">209k</text>
+  <text class="small" x="18" y="97">313k</text>
+  <text class="small" x="18" y="44">417k</text>
+  <text class="small" x="181" y="34">Ep05 max</text>
+  <text class="small" x="537" y="278">Ep17 min</text>
+
+  <rect class="panel" x="36" y="372" width="788" height="240" rx="10" />
+  <text class="label" x="52" y="398">Steps</text>
+  <line class="grid" x1="70" y1="540" x2="790" y2="540" />
+  <line class="grid" x1="70" y1="485" x2="790" y2="485" />
+  <line class="grid" x1="70" y1="430" x2="790" y2="430" />
+  <line class="grid" x1="70" y1="375" x2="790" y2="375" />
+  <line class="axis" x1="70" y1="540" x2="790" y2="540" />
+  <line class="axis" x1="70" y1="320" x2="70" y2="540" />
+  <polyline class="steps" points="70.0,535.2 100.0,570.6 130.0,549.0 160.0,578.1 190.0,360.0 220.0,541.5 250.0,558.0 280.0,577.3 310.0,566.3 340.0,571.0 370.0,540.0 400.0,561.4 430.0,537.2 460.0,505.9 490.0,562.5 520.0,448.4 550.0,578.5 580.0,521.1 610.0,559.1 640.0,492.6 670.0,452.5 700.0,446.0 730.0,571.2 760.0,493.2 790.0,545.7" />
+  <circle class="steps-dot" cx="190" cy="360" r="4.5" />
+  <circle class="steps-dot" cx="550" cy="578.5" r="4.5" />
+  <text class="small" x="18" y="542">0</text>
+  <text class="small" x="18" y="487">18k</text>
+  <text class="small" x="18" y="432">36k</text>
+  <text class="small" x="18" y="377">54k</text>
+  <text class="small" x="10" y="324">71.8k</text>
+  <text class="small" x="181" y="354">Ep05 max</text>
+  <text class="small" x="537" y="598">Ep17 min</text>
+
+  <text class="small" x="68" y="560">1</text>
+  <text class="small" x="248" y="560">7</text>
+  <text class="small" x="428" y="560">13</text>
+  <text class="small" x="608" y="560">19</text>
+  <text class="small" x="784" y="560">25</text>
+
+  <rect x="560" y="110" width="230" height="108" rx="10" fill="#f7f9fc" stroke="#d6dde5" stroke-width="1.2" />
+  <text class="legend" x="578" y="136">Summary</text>
+  <text class="stat" x="578" y="160">Reward mean: 96,881.12</text>
+  <text class="stat" x="578" y="182">Reward median: 64,986</text>
+  <text class="stat" x="578" y="204">Reward P25: 25,730</text>
+
+  <rect x="560" y="392" width="230" height="126" rx="10" fill="#f7f9fc" stroke="#d6dde5" stroke-width="1.2" />
+  <text class="legend" x="578" y="418">More stats</text>
+  <text class="stat" x="578" y="442">Reward min/max: 2,874 / 417,044</text>
+  <text class="stat" x="578" y="464">Steps mean: 16,683.72</text>
+  <text class="stat" x="578" y="486">Steps min/max: 505 / 71,825</text>
+  <text class="stat" x="578" y="508">Decision mean: 0.00572 s</text>
+</svg>

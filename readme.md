@@ -76,12 +76,12 @@ python -u tetris\train_dqn.py `
   --step-log-every 500 `
   --save-every 10 `
   --eval-every 50 `
-  --eval-episodes 5 `
-  --best-metric eval_avg `
+  --eval-episodes 20 `
+  --best-metric eval_p25 `
   --output .\models\dqn_afterstate.pt
 ```
 
-训练会保存两个文件：`--output` 是最新 checkpoint，默认额外生成同名 `_best.pt`，例如 `dqn_afterstate_best.pt`。`_best.pt` 按周期性 greedy 评估的平均 reward 保存，更适合作为之后评估和继续训练的起点。
+训练会保存两个文件：`--output` 是最新 checkpoint，默认额外生成同名 `_best.pt`，例如 `dqn_afterstate_best.pt`。`_best.pt` 按固定 validation seeds 的 greedy 评估保存，更适合作为之后评估和继续训练的起点。`eval_p25` 比 `eval_avg` 更保守，能避免少数高分 seed 把 checkpoint 误判成 best。
 
 如果发现纯 CNN DQN 走偏，比如经常留下明显空洞，可以启用棋盘特征增强版。它会把高度、洞数、凹凸度、井深等归一化特征和棋盘图一起输入网络，比只看棋盘图更不容易学歪：
 
@@ -103,8 +103,8 @@ python -u tetris\train_dqn.py `
   --step-log-every 500 `
   --save-every 1 `
   --eval-every 50 `
-  --eval-episodes 5 `
-  --best-metric eval_avg `
+  --eval-episodes 20 `
+  --best-metric eval_p25 `
   --output .\models\dqn_afterstate_features.pt
 ```
 
@@ -115,6 +115,16 @@ python -u tetris\train_dqn.py `
 ```powershell
 conda run --no-capture-output -n tetris_env python -u tetris\train_dqn.py --episodes 500 --output .\models\dqn_afterstate.pt
 ```
+
+如果训练中终端暂时没有输出，或者 `nvidia-smi` 显示 GPU 利用率很低，不一定代表训练卡住。环境模拟、候选棋盘生成、棋盘特征计算和 validation evaluation 大多在 CPU 上运行；同时日志只会按 `--step-log-every` 或 `--log-every` 间隔输出。只要还能继续出现 `Step ...`、`Episode ...` 或 `Eval episode=...`，训练就在正常进行。
+
+也可以用下面命令检查最新 checkpoint 是否仍在更新：
+
+```powershell
+Get-Item .\models\dqn_afterstate_features_stable.pt
+```
+
+如果 `LastWriteTime` 最近更新过，说明训练至少已经完成过保存。若长时间没有日志、CPU/GPU 都接近 0%，再考虑是否真的卡住。
 
 如果想和纯环境 reward 对照，可以关闭 reward shaping：
 
@@ -141,8 +151,8 @@ python -u tetris\train_dqn.py `
   --step-log-every 500 `
   --save-every 1 `
   --eval-every 50 `
-  --eval-episodes 5 `
-  --best-metric eval_avg `
+  --eval-episodes 20 `
+  --best-metric eval_p25 `
   --output .\models\dqn_afterstate_finetuned.pt
 ```
 
@@ -159,6 +169,14 @@ python tetris\main.py --agent dqn --dqn-model .\models\dqn_afterstate_best.pt --
 ```
 
 可视化观看一局：
+
+```powershell
+python tetris\main.py --agent dqn --dqn-model .\models\dqn_afterstate_features_best.pt --render-mode human --delay-ms 80
+```
+
+评估和可视化默认会使用 `auto` 设备；如果 PyTorch 能看到 CUDA，就会把 DQN 模型放到 GPU 上。即使只是运行模型，每一步也会对多个候选落子棋盘做网络前向计算，并且 PyTorch 会保留 CUDA 上下文和显存缓存。因此 `nvidia-smi` 里看到 `python.exe` 占用一部分显存是正常现象。
+
+实际测试中，`human` 可视化模式强制使用 CPU 可能会无响应，因此可视化更建议继续使用默认 GPU。若训练进程同时运行，可视化会让训练变慢；此时可以减少可视化局数，或等训练保存 checkpoint 后再单独观看。
 
 ```powershell
 python tetris\main.py --agent dqn --dqn-model .\models\dqn_afterstate_features_best.pt --render-mode human --delay-ms 80

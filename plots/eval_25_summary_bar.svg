@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <style>
+    .bg { fill: #ffffff; }
+    .grid { stroke: #cad3de; stroke-width: 1.5; stroke-dasharray: 8 8; opacity: 0.65; }
+    .axis { stroke: #111111; stroke-width: 2.6; }
+    .bar { fill: #377eb1; }
+    .err { stroke: #111111; stroke-width: 4.2; }
+    .title { font: 700 38px 'Segoe UI', Arial, sans-serif; fill: #151515; }
+    .tick { font: 15px 'Segoe UI', Arial, sans-serif; fill: #222222; }
+    .label { font: 18px 'Segoe UI', Arial, sans-serif; fill: #202020; }
+    .value { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #1b1b1b; }
+    .note { font: 16px 'Segoe UI', Arial, sans-serif; fill: #536273; }
+  </style>
+  <rect class="bg" x="0" y="0" width="1600" height="1000"/>
+  <text class="title" x="800" y="68" text-anchor="middle">Evaluation Summary on 25 Episodes</text>
+
+  <line class="grid" x1="140" y1="820" x2="1500" y2="820"/>
+  <line class="grid" x1="140" y1="690" x2="1500" y2="690"/>
+  <line class="grid" x1="140" y1="560" x2="1500" y2="560"/>
+  <line class="grid" x1="140" y1="430" x2="1500" y2="430"/>
+  <line class="grid" x1="140" y1="300" x2="1500" y2="300"/>
+  <line class="grid" x1="140" y1="170" x2="1500" y2="170"/>
+  <line class="axis" x1="140" y1="820" x2="1500" y2="820"/>
+  <line class="axis" x1="140" y1="120" x2="140" y2="820"/>
+
+  <text class="tick" x="100" y="826">0</text>
+  <text class="tick" x="55" y="696">50k</text>
+  <text class="tick" x="48" y="566">100k</text>
+  <text class="tick" x="48" y="436">150k</text>
+  <text class="tick" x="48" y="306">200k</text>
+  <text class="tick" x="48" y="176">250k</text>
+
+  <rect class="bar" x="300" y="548.7" width="360" height="271.3"/>
+  <line class="err" x1="480" y1="267.7" x2="480" y2="829.7"/>
+  <line class="err" x1="458" y1="267.7" x2="502" y2="267.7"/>
+  <line class="err" x1="458" y1="829.7" x2="502" y2="829.7"/>
+  <text class="value" x="480" y="530" text-anchor="middle">96,881.1</text>
+  <text class="label" x="480" y="870" text-anchor="middle">Average Reward</text>
+
+  <rect class="bar" x="760" y="638.0" width="360" height="182.0"/>
+  <text class="value" x="940" y="620" text-anchor="middle">64,986.0</text>
+  <text class="label" x="940" y="870" text-anchor="middle">Median Reward</text>
+
+  <rect class="bar" x="1220" y="747.9" width="220" height="72.1"/>
+  <text class="value" x="1330" y="730" text-anchor="middle">25,730.0</text>
+  <text class="label" x="1330" y="870" text-anchor="middle">P25 Reward</text>
+
+  <text class="note" x="240" y="930">Error bar on average reward shows +/- 1 standard deviation (100,358.6).</text>
+  <text class="note" x="240" y="956">Median and P25 better reflect stability because a few very high-score episodes raise the mean.</text>
+</svg>

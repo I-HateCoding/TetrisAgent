@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <style>
+    .bg { fill: #ffffff; }
+    .grid { stroke: #cad3de; stroke-width: 1.5; stroke-dasharray: 8 8; opacity: 0.65; }
+    .axis { stroke: #111111; stroke-width: 2.6; }
+    .bar { fill: #377eb1; }
+    .err { stroke: #111111; stroke-width: 4.2; }
+    .title { font: 700 38px 'Segoe UI', Arial, sans-serif; fill: #151515; }
+    .tick { font: 15px 'Segoe UI', Arial, sans-serif; fill: #222222; }
+    .label { font: 18px 'Segoe UI', Arial, sans-serif; fill: #202020; }
+    .value { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #1b1b1b; }
+    .note { font: 16px 'Segoe UI', Arial, sans-serif; fill: #536273; }
+  </style>
+  <rect class="bg" x="0" y="0" width="1600" height="1000"/>
+  <text class="title" x="800" y="68" text-anchor="middle">Step Statistics on 25 Episodes</text>
+
+  <line class="grid" x1="140" y1="820" x2="1500" y2="820"/>
+  <line class="grid" x1="140" y1="680" x2="1500" y2="680"/>
+  <line class="grid" x1="140" y1="540" x2="1500" y2="540"/>
+  <line class="grid" x1="140" y1="400" x2="1500" y2="400"/>
+  <line class="grid" x1="140" y1="260" x2="1500" y2="260"/>
+  <line class="grid" x1="140" y1="120" x2="1500" y2="120"/>
+  <line class="axis" x1="140" y1="820" x2="1500" y2="820"/>
+  <line class="axis" x1="140" y1="120" x2="140" y2="820"/>
+
+  <text class="tick" x="100" y="826">0</text>
+  <text class="tick" x="55" y="686">15k</text>
+  <text class="tick" x="55" y="546">30k</text>
+  <text class="tick" x="55" y="406">45k</text>
+  <text class="tick" x="55" y="266">60k</text>
+  <text class="tick" x="55" y="126">75k</text>
+
+  <rect class="bar" x="300" y="664.3" width="360" height="155.7"/>
+  <line class="err" x1="480" y1="503.2" x2="480" y2="825.4"/>
+  <line class="err" x1="458" y1="503.2" x2="502" y2="503.2"/>
+  <line class="err" x1="458" y1="825.4" x2="502" y2="825.4"/>
+  <text class="value" x="480" y="646" text-anchor="middle">16,683.7</text>
+  <text class="label" x="480" y="870" text-anchor="middle">Average Steps</text>
+
+  <rect class="bar" x="760" y="715.6" width="360" height="104.4"/>
+  <text class="value" x="940" y="697" text-anchor="middle">11,187.0</text>
+  <text class="label" x="940" y="870" text-anchor="middle">Median Steps</text>
+
+  <rect class="bar" x="1220" y="778.4" width="220" height="41.6"/>
+  <text class="value" x="1330" y="760" text-anchor="middle">4,461.0</text>
+  <text class="label" x="1330" y="870" text-anchor="middle">P25 Steps</text>
+
+  <text class="note" x="240" y="930">Error bar on average steps shows +/- 1 standard deviation (17,256.9).</text>
+  <text class="note" x="240" y="956">The long right tail matches the high-score episodes: once the agent survives longer, both steps and reward increase sharply.</text>
+</svg>
